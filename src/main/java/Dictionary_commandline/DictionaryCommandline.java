@@ -95,7 +95,7 @@ public class DictionaryCommandline {
                         // Export ra tệp
                         System.out.println("Exporting...");
 
-                        dictionaryManagement.exportToFile("src\\main\\java\\OUT.txt");
+                        dictionaryManagement.exportToFile("src\\main\\java\\dictionaries.txt");
 
                         break;
                     default:
