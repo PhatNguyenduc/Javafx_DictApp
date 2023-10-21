@@ -1,32 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
-<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="560.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.AddWord">
+<AnchorPane fx:id="addAnchorPane" prefHeight="560.0" prefWidth="750.0" styleClass="addAnchorPane" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.AddWord">
    <children>
-      <TextArea fx:id="word" layoutX="68.0" layoutY="124.0" prefHeight="139.0" prefWidth="286.0" promptText="Add word here...." />
-      <TextArea fx:id="meaning" layoutX="404.0" layoutY="124.0" prefHeight="139.0" prefWidth="302.0" promptText="Add meaining here" />
-      <Label layoutX="130.0" layoutY="51.0" prefHeight="41.0" prefWidth="174.0" text="Nhập từ bạn muốn thêm" textAlignment="CENTER">
+      <Label fx:id="logstatus" layoutX="375.0" layoutY="341.0" prefHeight="87.0" prefWidth="338.0" styleClass="logstatus" textAlignment="RIGHT" />
+      <TextArea fx:id="word" layoutX="42.0" layoutY="100.0" prefHeight="139.0" prefWidth="286.0" promptText="Add word here...." styleClass="word" />
+      <TextArea fx:id="meaning" layoutX="53.0" layoutY="299.0" prefHeight="139.0" prefWidth="286.0" promptText="Add meaining here" styleClass="meaning" />
+      <Label fx:id="wordLabel1" layoutX="98.0" layoutY="63.0" prefHeight="41.0" prefWidth="174.0" styleClass="wordLabel1" text="  Nhập từ bạn muốn thêm" textAlignment="CENTER">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <Label layoutX="491.0" layoutY="61.0" text="Nhập nghĩa của từ">
+      <Label fx:id="meaningLabel1" layoutX="102.0" layoutY="259.0" prefHeight="42.0" prefWidth="166.0" styleClass="meaningLabel1" text="    Nhập nghĩa của từ">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <Button fx:id="confirm" layoutX="345.0" layoutY="280.0" mnemonicParsing="false" onAction="#initialize" text="Confirm" />
-      <Button fx:id="Back" layoutX="24.0" layoutY="25.0" mnemonicParsing="false" onAction="#initialize" text="Back" />
-      <Label fx:id="label" layoutX="65.0" layoutY="365.0" prefHeight="42.0" prefWidth="27.0" text="Log" textFill="#10e43a" />
-      <Label fx:id="log" layoutX="101.0" layoutY="363.0" prefHeight="87.0" prefWidth="338.0" textAlignment="CENTER" />
-      <TextArea fx:id="update_meaning" layoutX="491.0" layoutY="395.0" prefHeight="119.0" prefWidth="174.0" promptText="Update Meaning here....." />
-      <Button fx:id="update" layoutX="550.0" layoutY="324.0" mnemonicParsing="false" onAction="#initialize" text="Update" />
-      <TextField fx:id="update_word" layoutX="491.0" layoutY="363.0" prefHeight="26.0" prefWidth="174.0" promptText="put word need to update " />
+      <JFXButton fx:id="confirm" buttonType="RAISED" layoutX="156.0" layoutY="456.0" onAction="#initialize" styleClass="confirm" text="Confirm">
+         <graphic>
+            <FontAwesomeIconView glyphName="CHECK" size="15" />
+         </graphic>
+      </JFXButton>
+      <Label fx:id="loglabel" layoutX="504.0" layoutY="299.0" prefHeight="42.0" prefWidth="79.0" styleClass="loglabel" text="         Log" />
+      <ImageView fitHeight="172.0" fitWidth="286.0" layoutX="386.0" layoutY="84.0">
+         <image>
+            <Image url="@Addwordimage.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

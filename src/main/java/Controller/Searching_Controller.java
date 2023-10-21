@@ -23,10 +23,13 @@ import java.io.IOException;
 public class Searching_Controller {
 
 
-    public static String getWord = new String();
+    public static String getWord = null;
 
     @FXML
     private ListView<String> listView = new ListView<String>();
+
+
+
 
     @FXML
     private TextField searchtext = new TextField();
@@ -46,9 +49,11 @@ public class Searching_Controller {
     @FXML
     private Button Add = new Button();
     @FXML
-    public static AnchorPane anchorPane = new AnchorPane();
+    public  AnchorPane anchorPane = new AnchorPane();
     @FXML
     private Button delete_word = new Button();
+    @FXML
+    private Button update_word = new Button();
 
 //    @FXML
 //    private Button API = new Button();
@@ -66,15 +71,13 @@ public class Searching_Controller {
 
     }
 
-    {
-        listView.setVisible(false);
-    }
 
 
 
 
 
-    public  String path = "src\\main\\java\\dictionaries.txt";
+
+    public  String path = "src\\main\\java\\OUT.txt";
     private DictionaryManagement dict = new DictionaryManagement();
     {
         dict.insertWordFromFile(path);
@@ -86,32 +89,35 @@ public class Searching_Controller {
     {
         dataList.addAll(dict.getAllWords());
     }
+//    {
+//        listView.setVisible(false);
+//    }
     public void initialize() {
 
     listView.setItems(dataList);
 
 
-        // Sử dụng TextFormatter để lắng nghe sự kiện ngay khi nhập
+
         searchtext.setTextFormatter(new TextFormatter<String>((TextFormatter.Change change) -> {
             String newText = change.getControlNewText();
             filterData(newText);
             return change;
         }));
 
-        searchtext.setOnMouseClicked(mouseEvent -> {
-            listView.setVisible(true);
-        });
+//        searchtext.setOnMouseClicked(mouseEvent -> {
+//            listView.setVisible(true);
+//        });
 
-        searchtext.focusedProperty().addListener((obs, oldValue, newValue) -> {
-            if (!newValue && anchorPane.isFocused()) {
-                listView.setVisible(false);
-            }
-        });
+//        searchtext.focusedProperty().addListener((obs, oldValue, newValue) -> {
+//            if (!newValue && anchorPane.isFocused()) {
+//                listView.setVisible(false);
+//            }
+//        });
 
 
-        anchorPane.setOnMouseClicked(event -> {
-            listView.setVisible(false);
-        });
+//        anchorPane.setOnMouseClicked(event -> {
+//            listView.setVisible(false);
+//        });
 
         listView.setOnMouseClicked(event -> {
             String selectedWord = listView.getSelectionModel().getSelectedItem();
@@ -130,17 +136,41 @@ public class Searching_Controller {
             }
         });
 
-        Add.setOnMouseClicked(event -> {
-            try {
-                switch_add(event);
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        });
+//        Add.setOnMouseClicked(event -> {
+//            try {
+//                switch_add(event);
+//            } catch (IOException e) {
+//                throw new RuntimeException(e);
+//            }
+//        });
 
         delete_word.setOnMouseClicked(event -> {
             deleteword();
         });
+
+        update_word.setOnMouseClicked(event -> {
+            if(getWord!=null) {
+                updatedialog.show();
+            } else {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error");
+                alert.setHeaderText("missing a word to change the meaing");
+                alert.setContentText("click in list to choose your word you want to update");
+                alert.getButtonTypes().setAll(ButtonType.OK);
+                alert.showAndWait();
+
+            }
+        });
+        updatedialog.setResultConverter(buttonType -> {
+            if(buttonType == ButtonType.OK) {
+                String s = updateTF.getText().trim().toLowerCase();
+                dict.updateWord(getWord,s);
+                dict.exportToFile(path);
+                getWord = null;
+            }
+            return null;
+        });
+
 
 
 
@@ -168,37 +198,48 @@ public class Searching_Controller {
     }
 
 
-    public void switch_add(MouseEvent event) throws IOException {
-        try  {
-            Parent root = FXMLLoader.load(getClass().getResource("AddWord.fxml"));
-
-            Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-            stage.setScene(null);
-            stage.setScene(new Scene(root));
-            stage.show();
-
-
-            //((Node)(event.getSource())).getScene().getWindow().hide();
-        }
-        catch(IOException e) {
-            e.printStackTrace();
-        }
-    }
+//    public void switch_add(MouseEvent event) throws IOException {
+//        try  {
+//            Parent root = FXMLLoader.load(getClass().getResource("AddWord.fxml"));
+//
+//            Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+//            Scene scene = stage.getScene();
+//            scene.setRoot(root);
+//            //stage.setScene(null);
+//            System.gc();
+//            stage.setScene(scene);
+//            stage.show();
+//
+//
+//
+//        }
+//        catch(IOException e) {
+//            e.printStackTrace();
+//        }
+//    }
 
     public void deleteword() {
         if(getWord!= null) {
             dataList.remove(getWord);
             dict.deleteWord(getWord);
             dict.exportToFile(path);
+            getWord = null;
         }
     }
+    @FXML
+    private TextArea updateTF = new TextArea();
 
+    ButtonType update_confirm = ButtonType.OK;
+    @FXML
+    Dialog updatedialog = new Dialog();
+    {
+        updatedialog.setTitle("Update");
+        updatedialog.setHeaderText("Update meaning to your word");
+        updatedialog.getDialogPane().getButtonTypes().addAll(update_confirm,ButtonType.CANCEL);
+        updatedialog.getDialogPane().setContent(updateTF);
+        updatedialog.getDialogPane().setPrefSize(400,250);
 
-
-
-
-
-
+    }
 
 
 }

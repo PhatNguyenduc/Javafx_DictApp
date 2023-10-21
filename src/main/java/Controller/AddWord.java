@@ -10,6 +10,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import Dictionary_commandline.*;
@@ -19,17 +20,21 @@ import java.io.IOException;
 
 public class AddWord {
 
-    public String path = "src\\main\\java\\dictionaries.txt";
+    public String path = "src\\main\\java\\OUT.txt";
     private DictionaryManagement dictionary = new DictionaryManagement();
 
     {
         dictionary.insertWordFromFile(path);
     }
 
+    @FXML
+    public  AnchorPane addAnchorPane = new AnchorPane();
+
 
     @FXML
-    private Button Back = new Button();
-
+    private Label wordLabel1 = new Label();
+    @FXML
+    private Label meaningLabel1 = new Label();
     @FXML
     private TextArea word = new TextArea();
 
@@ -39,10 +44,10 @@ public class AddWord {
     @FXML
     private Button confirm = new Button();
     @FXML
-    private Label label = new Label();
+    private Label loglabel = new Label();
 
     @FXML
-    private Label log = new Label();
+    private Label logstatus = new Label();
 
     @FXML
     private Button update = new Button();
@@ -53,13 +58,6 @@ public class AddWord {
     private TextField update_word = new TextField();
 
     public void initialize() {
-        Back.setOnMouseClicked(mouseEvent -> {
-            try {
-                move_back(mouseEvent);
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        });
 
 
         confirm.setOnMouseClicked(mouseEvent -> {
@@ -72,21 +70,7 @@ public class AddWord {
 
     }
 
-    public void move_back(MouseEvent event) throws IOException {
-        try {
 
-
-            Parent root = FXMLLoader.load(getClass().getResource("Searching.fxml"));
-
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            stage.setScene(null);
-            stage.setScene(new Scene(root));
-            stage.show();
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 
     public void addword() {
         String newWord = word.getText().toString().toLowerCase().trim();
@@ -94,12 +78,13 @@ public class AddWord {
 
         if (dictionary.getDictionary().haveWord(newWord)) {
             String l = "Word exists in dictionary, use update if you want to change the meaning of the word";
-            log.setText(l);
+            logstatus.setText(l);
 
         } else {
 
             dictionary.getDictionary().insertWord(newWord,newMeaning);
-            log.setText("Success adding");
+            dictionary.exportToFile(path);
+            logstatus.setText("Success adding");
 
         }
 
@@ -109,12 +94,12 @@ public class AddWord {
         String m = update_meaning.getText().toString().toLowerCase().trim();
         if (!dictionary.getDictionary().haveWord(w)) {
             String l = "Word doesnt in dictionary ,add them to";
-            log.setText(l);
+            logstatus.setText(l);
 
         }
         else {
             dictionary.updateWord(w,m);
-            log.setText("update Success");
+            logstatus.setText("update Success");
             dictionary.exportToFile(path);
         }
     }
