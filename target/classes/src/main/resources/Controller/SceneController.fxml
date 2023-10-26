@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+
+<AnchorPane prefHeight="560.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.SceneController">
+   <children>
+      <AnchorPane prefHeight="560.0" prefWidth="50.0" style="-fx-background-color: mediumseagreen;">
+         <children>
+            <JFXButton fx:id="APIButton" layoutY="280.0" prefHeight="32.0" prefWidth="74.0" text="API">
+               <graphic>
+                  <ImageView fitHeight="34.0" fitWidth="32.0">
+                     <image>
+                        <Image url="@trans_icon.png" />
+                     </image>
+                  </ImageView>
+               </graphic></JFXButton>
+            <JFXButton fx:id="AddButton" layoutX="-1.0" layoutY="161.0" onMouseClicked="#initialize" prefHeight="28.0" prefWidth="73.0" text="Add">
+               <graphic>
+                  <FontAwesomeIconView glyphName="PLUS" size="20" />
+               </graphic>
+            </JFXButton>
+            <JFXButton fx:id="SearchButton" layoutX="-1.0" layoutY="203.0" onMouseClicked="#initialize" text="Search">
+               <graphic>
+                  <FontAwesomeIconView glyphName="SEARCH" size="20" />
+               </graphic>
+            </JFXButton>
+            <JFXButton fx:id="gameButton" layoutY="247.0" text="Game">
+               <graphic>
+                  <FontAwesomeIconView glyphName="GAMEPAD" size="20" />
+               </graphic></JFXButton>
+            <FontAwesomeIconView glyphName="BOOK" layoutX="4.0" layoutY="100.0" selectionFill="#e42c2c" size="70">
+               <fill>
+                  <LinearGradient endX="0.6486742424242424" endY="0.8522727191448212" startY="0.13257575757575757">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color red="0.1996101438999176" green="0.6736842393875122" blue="0.4445483982563019" />
+                           </color>
+                        </Stop>
+                        <Stop offset="0.2209992449857204">
+                           <color>
+                              <Color />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="1.0" green="1.0" blue="1.0" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </LinearGradient>
+               </fill>
+            </FontAwesomeIconView>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="mainAnchorPane" layoutX="74.0" prefHeight="560.0" prefWidth="750.0" />
+   </children>
+</AnchorPane>

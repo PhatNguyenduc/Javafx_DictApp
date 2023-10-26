@@ -14,6 +14,7 @@
 
 
 
+
 |a font
 /ɑ:'fɜ:ɳ/
 * phó từ
@@ -31,8 +32,10 @@
 
 
 
+
 |a ignore b gate
 ??? tu deo gi vay man
+
 
 |a la carte
 /'ɑ:lɑ:'kɑ:t/
@@ -53,10 +56,12 @@
 
 
 
+
 |abacist
 *danh từ
 - người gãy bàn phím
 - người kế toán
+
 
 
 
@@ -90,8 +95,10 @@
 
 
 
+
 |abac, abacus
 - bàn tính, toán đồ, bản đồ tính
+
 
 
 
@@ -122,10 +129,12 @@
 
 
 
+
 |abasement
 /ə'beismənt/
 * danh từ
 - sự làm hạ phẩm giá, sự làm mất thể diện, sự làm nhục
+
 
 
 
@@ -155,8 +164,10 @@
 
 
 
+
 |arms
 cawngr tay
+
 
 
 
@@ -176,6 +187,7 @@ anhdungdaytuchieu
 
 
 
+
 |go to
 di chuyển
 
@@ -183,8 +195,6 @@ di chuyển
 
 
 
+
 |hello
-gogo
-
-
-
+chao iem anh dung day tu chieu
