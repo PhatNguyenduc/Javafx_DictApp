@@ -11,7 +11,7 @@
 
 <AnchorPane fx:id="addAnchorPane" prefHeight="560.0" prefWidth="750.0" styleClass="addAnchorPane" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.AddWord">
    <children>
-      <Label fx:id="logstatus" layoutX="375.0" layoutY="341.0" prefHeight="87.0" prefWidth="338.0" styleClass="logstatus" textAlignment="RIGHT" />
+      <Label fx:id="logstatus" layoutX="367.0" layoutY="341.0" prefHeight="172.0" prefWidth="361.0" styleClass="logstatus" textAlignment="RIGHT" />
       <TextArea fx:id="word" layoutX="42.0" layoutY="100.0" prefHeight="139.0" prefWidth="286.0" promptText="Add word here...." styleClass="word" />
       <TextArea fx:id="meaning" layoutX="53.0" layoutY="299.0" prefHeight="139.0" prefWidth="286.0" promptText="Add meaining here" styleClass="meaning" />
       <Label fx:id="wordLabel1" layoutX="98.0" layoutY="63.0" prefHeight="41.0" prefWidth="174.0" styleClass="wordLabel1" text="  Nhập từ bạn muốn thêm" textAlignment="CENTER">
@@ -29,10 +29,10 @@
             <FontAwesomeIconView glyphName="CHECK" size="15" />
          </graphic>
       </JFXButton>
-      <Label fx:id="loglabel" layoutX="504.0" layoutY="299.0" prefHeight="42.0" prefWidth="79.0" styleClass="loglabel" text="         Log" />
+      <Label fx:id="loglabel" layoutX="508.0" layoutY="299.0" prefHeight="42.0" prefWidth="79.0" styleClass="loglabel" text="         Log" />
       <ImageView fitHeight="172.0" fitWidth="286.0" layoutX="386.0" layoutY="84.0">
          <image>
-            <Image url="@Addwordimage.png" />
+            <Image url="@iconandimage/Addwordimage.png" />
          </image>
       </ImageView>
    </children>

@@ -89,18 +89,24 @@ public class Searching_Controller {
     {
         dataList.addAll(dict.getAllWords());
     }
-//    {
-//        listView.setVisible(false);
-//    }
+
     public void initialize() {
+
 
     listView.setItems(dataList);
 
 
 
         searchtext.setTextFormatter(new TextFormatter<String>((TextFormatter.Change change) -> {
-            String newText = change.getControlNewText();
-            filterData(newText);
+            if(searchtext.getText().isEmpty()) {
+                listviewdefault();
+
+            }
+            else
+            {
+                String newText = change.getControlNewText();
+                filterData(newText);
+            }
             return change;
         }));
 
@@ -184,6 +190,20 @@ public class Searching_Controller {
         }
         listView.setItems(filteredList);
     }
+
+    private void listviewdefault() {
+        ObservableList<String> dlist = FXCollections.observableArrayList();
+        int size = 0;
+        for(String item : dataList) {
+            if(size > 15) {
+                break;
+            }
+            dlist.add(item);
+            size++;
+        }
+        listView.setItems(dlist);
+    }
+
     private String getMeaning(String word) {
         return dict.getWordMeaning(word);
     }
@@ -198,25 +218,7 @@ public class Searching_Controller {
     }
 
 
-//    public void switch_add(MouseEvent event) throws IOException {
-//        try  {
-//            Parent root = FXMLLoader.load(getClass().getResource("AddWord.fxml"));
-//
-//            Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-//            Scene scene = stage.getScene();
-//            scene.setRoot(root);
-//            //stage.setScene(null);
-//            System.gc();
-//            stage.setScene(scene);
-//            stage.show();
-//
-//
-//
-//        }
-//        catch(IOException e) {
-//            e.printStackTrace();
-//        }
-//    }
+
 
     public void deleteword() {
         if(getWord!= null) {
@@ -240,6 +242,8 @@ public class Searching_Controller {
         updatedialog.getDialogPane().setPrefSize(400,250);
 
     }
+
+
 
 
 }

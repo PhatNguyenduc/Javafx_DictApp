@@ -19,12 +19,12 @@
       </JFXButton>
       <ImageView fx:id="Vn_flag_1" fitHeight="52.0" fitWidth="77.0" layoutX="489.0" layoutY="39.0">
          <image>
-            <Image url="@VienNam_flag.png" />
+            <Image url="@iconandimage/VN_flag.png" />
          </image>
       </ImageView>
       <ImageView fx:id="Eng_flag_1" fitHeight="52.0" fitWidth="77.0" layoutX="140.0" layoutY="39.0">
          <image>
-            <Image url="@UK_flag.png" />
+            <Image url="@iconandimage/UK_flag.png" />
          </image>
       </ImageView>
    </children>

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextArea?>
@@ -14,31 +13,52 @@
    <children>
       <AnchorPane layoutX="2.0" layoutY="2.0" prefHeight="100.0" prefWidth="750.0" style="-fx-background-color: #3cb371; -fx-border-color: peru; -fx-border-style: solid;">
          <children>
-            <ImageView fitHeight="94.0" fitWidth="94.0" layoutX="120.0" layoutY="4.0">
+            <ImageView fitHeight="94.0" fitWidth="94.0" layoutX="14.0" layoutY="5.0">
                <image>
-                  <Image url="@searchicon.png" />
+                  <Image url="@iconandimage/searchicon.png" />
                </image>
             </ImageView>
-            <FontAwesomeIconView glyphName="SEARCH" layoutX="33.0" layoutY="81.0" size="80" text="" />
-            <JFXButton fx:id="update_word" layoutX="305.0" layoutY="51.0" styleClass="update_word" text="Update">
+            <JFXButton fx:id="update_word" layoutX="375.0" layoutY="31.0" prefHeight="38.0" prefWidth="55.0" styleClass="update_word" text=" ">
                <graphic>
-                  <FontAwesomeIconView glyphName="FILE" />
+                  <ImageView fitHeight="32.0" fitWidth="29.0">
+                     <image>
+                        <Image url="@iconandimage/icons8-pencil-48.png" />
+                     </image>
+                  </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton fx:id="delete_word" layoutX="392.0" layoutY="51.0" onAction="#initialize" styleClass="delete_word" text="Delete">
+            <JFXButton fx:id="delete_word" layoutX="480.0" layoutY="30.0" onAction="#initialize" prefHeight="11.0" prefWidth="20.0" style="-fx-background-color: lightgreen;" styleClass="delete_word" text=" ">
                <graphic>
-                  <FontAwesomeIconView glyphName="TRASH" text="" />
+                  <ImageView fitHeight="33.0" fitWidth="35.0">
+                     <image>
+                        <Image url="@iconandimage/icons8-trash-100.png" />
+                     </image>
+                  </ImageView>
                </graphic>
             </JFXButton>
+            <ImageView fitHeight="86.0" fitWidth="76.0" layoutX="660.0" layoutY="9.0">
+               <image>
+                  <Image url="@iconandimage/icons8-dictionary-66.png" />
+               </image>
+            </ImageView>
          </children>
       </AnchorPane>
-      <TextArea fx:id="meaningArea" editable="false" layoutX="274.0" layoutY="120.0" prefHeight="430.0" prefWidth="420.0" styleClass="meaningArea" />
+      <TextArea fx:id="meaningArea" editable="false" layoutX="274.0" layoutY="123.0" prefHeight="428.0" prefWidth="420.0" styleClass="meaningArea" />
       <TextField fx:id="searchtext" layoutX="14.0" layoutY="116.0" onAction="#initialize" onDragDetected="#initialize" prefHeight="46.0" prefWidth="218.0" promptText="Search" styleClass="searchtext" />
       <ListView fx:id="listView" editable="true" layoutX="14.0" layoutY="162.0" prefHeight="386.0" prefWidth="218.0" styleClass="listView" />
       <Label fx:id="flag" layoutX="409.0" layoutY="101.0" prefHeight="26.0" prefWidth="139.0" styleClass="flag" text="    Definition " textFill="WHITE" />
       <JFXButton fx:id="sound" layoutX="694.0" layoutY="120.0" onAction="#initialize" text=" ">
          <graphic>
-            <FontAwesomeIconView fill="#1528ff" fontSmoothingType="LCD" glyphName="VOLUME_UP" selectionFill="#cc1111" size="20" text="" />
+            <ImageView fitHeight="28.0" fitWidth="26.0">
+               <image>
+                  <Image url="@iconandimage/icons8-sound-100.png" />
+               </image>
+            </ImageView>
          </graphic></JFXButton>
+      <ImageView fitHeight="46.0" fitWidth="42.0" layoutX="190.0" layoutY="116.0">
+         <image>
+            <Image url="@iconandimage/icons8-search-80.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

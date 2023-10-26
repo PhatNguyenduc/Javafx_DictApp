@@ -15,6 +15,13 @@
 
 
 
+
+
+
+
+
+
+
 |a font
 /ɑ:'fɜ:ɳ/
 * phó từ
@@ -33,62 +40,6 @@
 
 
 
-|a ignore b gate
-??? tu deo gi vay man
-
-
-|a la carte
-/'ɑ:lɑ:'kɑ:t/
-* phó từ
-- theo món, gọi theo món, đặt theo món
-= to dine a_la_carte+ ăn cơm gọi theo món
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-|abacist
-*danh từ
-- người gãy bàn phím
-- người kế toán
-
-
-
-
-
-
-
-
-
-
-
-
-
-|aback
-/ə'bæk/
-* phó từ
-- lùi lại, trở lại phía sau
-= to stand aback from+ đứng lùi lại để tránh
-- (hàng hải) bị thổi ép vào cột buồm (buồm)
-= to be taken aback+ (hàng hải) bị gió thổi ép vào cột buồm
-- (nghĩa bóng) sửng sốt, ngạc nhiên
-= to be taken aback by the news+ sửng sốt vì cái tin đó
-
-
-
-
-
-
 
 
 
@@ -98,6 +49,13 @@
 
 |abac, abacus
 - bàn tính, toán đồ, bản đồ tính
+
+
+
+
+
+
+
 
 
 
@@ -130,10 +88,24 @@
 
 
 
+
+
+
+
+
+
+
 |abasement
 /ə'beismənt/
 * danh từ
 - sự làm hạ phẩm giá, sự làm mất thể diện, sự làm nhục
+
+
+
+
+
+
+
 
 
 
@@ -165,6 +137,13 @@
 
 
 
+
+
+
+
+
+
+
 |arms
 cawngr tay
 
@@ -174,6 +153,22 @@ cawngr tay
 
 
 
+
+
+
+
+
+
+
+|1
+hi
+
+
+|2
+w
+
+|b
+go
 |chaoiem
 anhdungdaytuchieu
 
@@ -188,13 +183,32 @@ anhdungdaytuchieu
 
 
 
+
+
+
+
+
+
+
 |go to
-di chuyển
-
-
-
+abdcapsfsjkhfkf
 
 
 
 |hello
 chao iem anh dung day tu chieu
+
+
+
+
+
+
+
+|zoo
+sở thú
+
+
+
+
+
+
