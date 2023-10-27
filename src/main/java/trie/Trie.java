@@ -24,7 +24,8 @@ public class Trie {
             }
             node = node.children.get(c);
         }
-        // mark this node as a complete word
+
+            // mark this node as a complete word
         node.isEndOfWord = true;
         node.meaning = meaning;
     }

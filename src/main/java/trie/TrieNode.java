@@ -8,6 +8,7 @@ public class TrieNode {
     protected String meaning;
     protected Map<Character, TrieNode> children;
     public TrieNode() {
+        isEndOfWord = false;
         children = new HashMap<>();
         meaning = null;
     }

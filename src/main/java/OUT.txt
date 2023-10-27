@@ -1,113 +1,215 @@
+|a shares
+- (econ) cổ phiếu a.(cổ phiếu hưởng lãi sau).
++ xem financial capital.
 
-/space trade - off model/
-- (econ) mô hình đánh đổi không gian hay mô hình tiếp cận.
-+ một mô hình lý thuyết được sử dụng (chủ yếu) trong phân tích địa điểm dân cư ở các vùng đô thị, giải thích các hình thái vị trí do đánh đổi giữa khả năng tiếp cận của một địa điểm tới trung tâm của vùng và không gian của địa điểm đó.
 
-|accesion rate
-- (econ) tỷ lệ gia tăng lao động.
-+ số lượng những người thuê mới mỗi tháng tính theo tỷ lệ phần trăm tổng số việc làm do bộ lao động mỹ thống kê.
 
-|accesions tax
-- (econ) thuế quà tặng.
-+ thuế đánh vào quà tặng và tài sản thừa kế.
 
-|accelerated depreciation
-- (econ) khấu hao nhanh, khấu hao gia tốc.
-+ xem depreciation
 
-|accelerating inflation
-- (econ) lạm phát gia tốc.
-+ sự tăng vọt tỷ lệ lạm phát. nếu chính phủ cố giữ tỷ lệ thất nghiệp dưới mức tỷ lệ thất nghiệp tự nhiên thì việc đó sẽ dẫn tới lạm phát gia tốc.
 
-|accelerator
-- (econ) gia số
-+ xem accelerator principle.
 
-|accelerator principle
-- (econ) nguyên lý gia tốc.
-+ nguyên lý cho rằng mức đầu tư ròng phụ thuộc vào mức thay đổi dự kiến về sản lượng.
 
-|accelerator coefficient
-- (econ) hệ số gia tốc.
-+ một bội số theo đó đầu tư mới sẽ tăng lên khi có sự thay đổi về sản lượng.
 
-|accelerator effect
-- (econ) hiệu ứng gia tốc.
 
-|accumulated depreciation
-- (econ) khấu hao tích luỹ.
 
-|account
-- (econ) tài khoản.
-+ 1.một ghi chép giao dịch giữa hai bên giao dịch có thể là hai bộ phận của một doanh nghiệp và là yếu tố cơ bản trong tất cả các hệ thống giao dịch kinh doanh. 2.các giai đoạn, thường là hai tuần, theo đó năm kinh doanh của sở chứng khoán london được chia ra và qua các giai đoạn này, việc thanh toán các giao dịch trừ giao dịch chứng khoán viền vàng được tiến hành.
 
-|accounting price
-- (econ) giá kế toán.
 
-|accommodating monetary policy
-- (econ) chính sách tiền tệ điều tiết.
-+ xem validated inflation
 
-|accommodation transactions
-- (econ) các giao dịch điều tiết.
-+ trong cán cân thanh toán, một loại giao dịch tư bản do các cơ quan tiền tệ áp dụng hoặc điều hành để làm đối trọng lại tình trạng tín dụng hoặc tình trạng nợ nần nảy sinh trong các giao dịch tự định.
 
-|active balance
-- (econ) dư nghạch.
-+ trong lý thuyết tiền tệ, một vài mô hình giả thiết chia một cung ứng tiền tệ thành dư nghạch, đó là tiền dự trữ được đưa vào quay vòng trong các thời kỳ được xác định bởi các khoảng thời gian giữa các kỳ thanh toán, và nghạch nhàn rỗi là tiền dự trữ không được sử dụng để thanh toán thường xuyên.
 
-|activity analysis
-- (econ) phân tích hoạt động.
-+ xem linear programming.
 
-|activity rate
-- (econ) tỷ lệ lao động.
-+ xem labour force participation rate.
 
-|action lag
-- (econ) độ trễ của hành động.
-+ mức độ trễ giữa việc quyết định một chính sách (đặc biệt trong kinh tế học vĩ mô) và việc thực hiện chính sách đó.
 
-|achieving society, the.
-- (econ) xã hội thành đạt.
-+ đây là tiêu đề của một cuốn sách do giáo sư david c. mc. clelland của trường đại học harvard (princeton, nj, 1962) xuất bản, trong đó ông định nghĩa khái niệm động cơ thành đạt để đo ý nghĩ tưởng tượng và mức độ của các ý tưởng mới mà ông coi là nhân cách cần thiết đối với các chủ doanh nghiệp và vì vậy có ý nghĩa đối với sự phát triển kinh tế.
 
-|adaptive expectation
-- (econ) kỳ vọng thích nghi; kỳ vọng phỏng theo
-+ sự hình thành kỳ vọng về giá trị tương lai của một biến số chỉ dựa trên các giá trị trước đó của biến liên quan.
 
-|address principle
-- (econ) nguyên lý địa chỉ.
-+ trong nền kinh tế kế hoạch hoá  như ở liên xô trước đây, mỗi mục tiêu chiến lược đều có một tổ chức hoặc địa chỉ chịu trách nhiệm thực hiện mục tiêu đó
 
-|additive utility function
-- (econ) hàm thoả dụng phụ trợ.
-+ một dạng hàm thoả dụng : u= ua +ub+uc . trong đó u là độ thoả dụng a,b,c ;a hàng hoá thay thế trong các hệ thống chi tiêu tuyến tính, các nhóm hàng hoá này không thể thay thế cho nhau.
 
-|addition rule
-- (econ) quy tắc cộng.
-+ một quy tắc để xác định đạo hàm của một hàm đối với một biến số, trong đó hàm này bao gồm phép cộng tuyến tính của 2 hàm riêng biệt hoặc nhiều hơn trở lên của các biến.
+|abac, abacus
+- bàn tính, toán đồ, bản đồ tính
 
-|additional worker hypothesis
-- (econ) giả thuyết công nhân thêm vào.
-+ theo lập luận này, thu nhập thực tế của gia đình giảm trong thời kỳ suy thoái theo chu kỳ sẽ gây ra hiệu ứng thu nhập.
 
-|adding up problem
-- (econ) vấn đề cộng tổng.
-+ xem euler's therem
 
-|advalorem tax
-- (econ) thuế theo giá trị.
-+ một loại thuế dựa trên giá trị giao dịch. đó thường là tỷ lệ phần trăm khi giá bán lẻ, sỉ, hay quá trình sản xuất, và là dạng phổ biến của thuế doanh thu.
 
-|advance
-- (econ) tiền ứng trước.
-+ một khoản vay hoặc dựa vào luồng tiền đã xác định hoặc dự kiến. (xem bank loan).
 
-|advance refunding
-- (econ) hoàn trả trước.
-+  kỹ thuật quản lý công nợ mới được chính phủ liên bang, các chính quyền địa phương và tiểu bang của mỹ sử dụng.
 
-|advance corporation tax (act)
-- (econ) thuế doanh nghiệp ứng trước.
-+ là một khoản ứng trước thuế doanh nghiệp và được ghi vào tài khoản bên nợ của doanh nghiệp đối với loại thuế này. đó là một phương tiện để có thể thu thuế doanh nghiệp sớm hơn.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+|abase
+/ə'beis/
+* ngoại động từ
+- làm hạ phẩm giá, làm mất thể diện, làm nhục
+= to abase one-self+ tự hạ mình
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+|abasement
+/ə'beismənt/
+* danh từ
+- sự làm hạ phẩm giá, sự làm mất thể diện, sự làm nhục
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+|abash
+/ə'bæʃ/
+* ngoại động từ
+- làm bối rối, làm lúng túng, làm luống cuống
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+|arms
+cawngr tay
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+|1
+hi
+
+
+
+
+|2
+w
+
+
+
+|b
+go
+
+
+|chaoiem
+anhdungdaytuchieu
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+|go to
+abdcapsfsjkhfkf
+
+
+
+
+
+|hello
+chao iem anh dung day tu chieu
+
+
+
+
+
+
+
+
+
+|zoo
+sở thú
+
+
+
+
+
+
+
+

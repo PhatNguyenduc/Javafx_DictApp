@@ -35,7 +35,7 @@ public class DictionaryManagement {
                         break;
                     }
                 }
-                dictionary.insertWord(temp.trim(), meaning);
+                dictionary.insertWord(temp.toLowerCase().trim(), meaning);
             }
             // close file
             buf.close();
