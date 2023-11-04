@@ -23,11 +23,6 @@ public class APIgoogletranslate {
     @FXML
     private Button trans = new Button();
 
-    public static void main(String[] args) throws IOException, URISyntaxException {
-        String text = "Buồn quá";
-
-        System.out.println("Translated text: " + translateViToEn(text));
-    }
     @FXML
     private ImageView  Vn_flag_1 = new ImageView();
     @FXML
@@ -49,14 +44,14 @@ public class APIgoogletranslate {
 
     private void Eng_to_Vi() throws IOException, URISyntaxException {
             String s = engtext.getText();
-            String res = translateEnToVi(s);
+            String res = translateE_V(s);
             vitext.setText(res);
 
     }
 
     private void Vi_to_Eng() throws IOException, URISyntaxException {
         String s = engtext.getText();
-        String res = translateViToEn(s);
+        String res = translateV_E(s);
         vitext.setText(res);
 
     }
@@ -108,31 +103,34 @@ public class APIgoogletranslate {
 
     }
 
-    private static String translate(String langFrom, String langTo, String text) throws IOException, URISyntaxException {
+    public static String translateE_V(String text) throws IOException, URISyntaxException {
+        return APItranslate("en", "vi", text);
+    }
+
+    public static String translateV_E(String text) throws IOException, URISyntaxException {
+        return APItranslate("vi", "en", text);
+    }
+
+    private static String APItranslate(String langFrom, String langTo, String text) throws IOException, URISyntaxException {
         // INSERT YOU URL HERE
-        String urlStr = "https://script.google.com/macros/s/AKfycbw1qSfs1Hvfnoi3FzGuoDWijwQW69eGcMM_iGDF7p5vu1oN_CaFqIDFmCGzBuuGCk_N/exec" +
+        String APIurl = "https://script.google.com/macros/s/AKfycbw1qSfs1Hvfnoi3FzGuoDWijwQW69eGcMM_iGDF7p5vu1oN_CaFqIDFmCGzBuuGCk_N/exec" +
                 "?q=" + URLEncoder.encode(text, StandardCharsets.UTF_8) +
                 "&target=" + langTo +
                 "&source=" + langFrom;
-        URI uri = new URI(urlStr);
-        URL url = uri.toURL();
-        StringBuilder response = new StringBuilder();
+
+        URL url = new URI(APIurl).toURL();
+        StringBuilder respond_status_ = new StringBuilder();
         HttpURLConnection con = (HttpURLConnection) url.openConnection();
         con.setRequestProperty("User-Agent", "Mozilla/5.0");
-        BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
-        String inputLine;
-        while ((inputLine = in.readLine()) != null) {
-            response.append(inputLine);
+        BufferedReader bf = new BufferedReader(
+                new InputStreamReader(con.getInputStream()));
+        String input;
+        while ((input = bf.readLine()) != null) {
+            respond_status_.append(input);
         }
-        in.close();
-        return response.toString();
+        bf.close();
+        return respond_status_.toString();
     }
 
-    public static String translateEnToVi(String text) throws IOException, URISyntaxException {
-        return translate("en", "vi", text);
-    }
 
-    public static String translateViToEn(String text) throws IOException, URISyntaxException {
-        return translate("vi", "en", text);
-    }
 }
