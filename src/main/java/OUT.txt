@@ -24,8 +24,14 @@
 
 
 
+
+
+
 |abac, abacus
 - bàn tính, toán đồ, bản đồ tính
+
+
+
 
 
 
@@ -76,10 +82,16 @@
 
 
 
+
+
+
 |abasement
 /ə'beismənt/
 * danh từ
 - sự làm hạ phẩm giá, sự làm mất thể diện, sự làm nhục
+
+
+
 
 
 
@@ -129,32 +141,16 @@
 
 
 
+
+
+
 |arms
-cawngr tay
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-|1
-hi
-
-
-
-
+ádasdasdasdadsad
 |2
 w
+
+
+
 
 
 
@@ -162,8 +158,14 @@ w
 go
 
 
+
+
+
 |chaoiem
 anhdungdaytuchieu
+
+
+
 
 
 
@@ -192,6 +194,12 @@ abdcapsfsjkhfkf
 
 
 
+
+
+
+|hưng
+hung
+
 |hello
 chao iem anh dung day tu chieu
 
@@ -203,8 +211,14 @@ chao iem anh dung day tu chieu
 
 
 
+
+
+
 |zoo
 sở thú
+
+
+
 
 
 
