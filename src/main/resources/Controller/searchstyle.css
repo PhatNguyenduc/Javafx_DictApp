@@ -1,6 +1,4 @@
 
-
-
 .anchorPane {
     -fx-background-color:transparent;
     -fx-border-width: 2px 2px 2px 2px;
@@ -141,3 +139,27 @@
     -fx-background-color: limegreen;
     -fx-background-radius: 15px;
 }
+
+.listView {
+    -fx-background-color: #f0f0f0; /* Màu nền của mục */
+    -fx-text-fill: #333; /* Màu văn bản */
+    -fx-font-size: 14px; /* Kích thước chữ */
+    -fx-font-family: "Arial"; /* Font chữ */
+    -fx-border-color: #ccc; /* Màu biên */
+    -fx-border-width: 1px; /* Độ dày của biên */
+}
+
+.listView:selected {
+    -fx-background-color: #0078d4; /* Màu nền khi mục được chọn */
+    -fx-text-fill: white; /* Màu văn bản khi mục được chọn */
+}
+
+.listView:hover {
+    -fx-background-color: #e0e0e0; /* Màu nền khi di chuột qua */
+    -fx-text-fill: #ffff00; /* Màu văn bản khi di chuột qua */
+}
+
+.hintPane Label {
+    -fx-text-alignment: center;
+}
+
