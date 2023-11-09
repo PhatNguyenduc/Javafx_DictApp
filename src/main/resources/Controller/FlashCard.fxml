@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="560.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.FlashCardController">
+    <children>
+        <StackPane fx:id="flashcardPane" layoutX="306.0" layoutY="125.0" onMouseClicked="#initialize" prefHeight="310.0" prefWidth="381.0">
+            <children>
+                <Label fx:id="cardLabel" text="Từ" />
+            </children>
+        </StackPane>
+        <ListView fx:id="listView" layoutX="31.0" layoutY="142.0" prefHeight="270.0" prefWidth="200.0" styleClass="listView" />
+        <TextField layoutX="33.0" layoutY="92.0" prefHeight="26.0" prefWidth="200.0" />
+    </children>
+</AnchorPane>

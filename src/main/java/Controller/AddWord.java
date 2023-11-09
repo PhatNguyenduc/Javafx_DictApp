@@ -21,12 +21,9 @@ import java.io.IOException;
 
 public class AddWord {
 
-    public String path = "src\\main\\java\\OUT.txt";
-    private DictionaryManagement dictionary = new DictionaryManagement();
+    public String path = "src\\main\\java\\dictionaries.txt";
 
-    {
-        dictionary.insertWordFromFile(path);
-    }
+
 
     @FXML
     public AnchorPane addAnchorPane = new AnchorPane();
@@ -77,31 +74,31 @@ public class AddWord {
         String newWord = word.getText().toString().toLowerCase().trim();
         String newMeaning = meaning.getText().toString().toLowerCase().trim();
 
-        if (dictionary.getDictionary().haveWord(newWord)) {
+        if (Searching_Controller.dict.getDictionary().haveWord(newWord)) {
             String l = "Word exists in dictionary, use update if you want to change the meaning of the word";
             logstatus.setText(l);
 
         } else {
 
-            dictionary.getDictionary().insertWord(newWord,newMeaning);
-            dictionary.exportToFile(path);
+            Searching_Controller.dict.getDictionary().insertWord(newWord,newMeaning);
+            Searching_Controller.dict.exportToFile(path);
             logstatus.setText("Success adding");
-
         }
 
     }
     public void setUpdate() {
         String w = update_word.getText().toString().toLowerCase().trim();
         String m = update_meaning.getText().toString().toLowerCase().trim();
-        if (!dictionary.getDictionary().haveWord(w)) {
+        if (!Searching_Controller.dict.getDictionary().haveWord(w)) {
             String l = "Word doesnt in dictionary ,add them to";
             logstatus.setText(l);
 
         }
         else {
-            dictionary.updateWord(w,m);
+            Searching_Controller.dict.updateWord(w,m);
             logstatus.setText("update Success");
-            dictionary.exportToFile(path);
+            Searching_Controller.dict.exportToFile(path);
+            System.gc();
         }
     }
 }

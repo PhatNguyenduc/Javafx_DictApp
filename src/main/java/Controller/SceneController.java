@@ -22,7 +22,11 @@ public class SceneController {
      @FXML
     private AnchorPane mainAnchorPane = new AnchorPane();
 
-     public void initialize() {
+    @FXML
+    private Button flashCard = new Button();
+
+    public  AnchorPane getAnchorPane() {return mainAnchorPane;}
+    public void initialize() {
          AddButton.setOnMouseClicked(event ->{
              showComponent("AddWord.fxml");
          });
@@ -33,16 +37,20 @@ public class SceneController {
              showComponent("APIggt.fxml");
          });
          showComponent("Searching.fxml");
-
-     }
+        flashCard.setOnMouseClicked(event -> {
+            showComponent("FlashCard.fxml");
+        });
+        gameButton.setOnMouseClicked(event -> {
+            showComponent("Game.fxml");
+        });
+    }
 
     private void setNode( Node node ) {
         mainAnchorPane.getChildren().clear();
         mainAnchorPane.getChildren().add((Node) node);
-
     }
     @FXML
-    private void showComponent( String path ) {
+    public void showComponent(String path) {
         try {
             AnchorPane Component = FXMLLoader.load(getClass().getResource(path));
             setNode(Component);
