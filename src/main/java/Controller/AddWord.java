@@ -9,8 +9,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
 import Dictionary_commandline.*;
@@ -28,7 +29,7 @@ public class AddWord {
     }
 
     @FXML
-    public  AnchorPane addAnchorPane = new AnchorPane();
+    public AnchorPane addAnchorPane = new AnchorPane();
 
 
     @FXML

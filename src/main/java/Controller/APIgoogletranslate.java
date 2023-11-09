@@ -2,12 +2,10 @@ package Controller;
 
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -16,6 +14,9 @@ import java.net.*;
 import java.nio.charset.StandardCharsets;
 
 public class APIgoogletranslate {
+
+    @FXML
+    private AnchorPane api = new AnchorPane();
     @FXML
     private TextArea engtext = new TextArea();
     @FXML
@@ -23,19 +24,25 @@ public class APIgoogletranslate {
     @FXML
     private Button trans = new Button();
 
-    @FXML
-    private ImageView  Vn_flag_1 = new ImageView();
-    @FXML
-    private ImageView  Eng_flag_1 = new ImageView();
+//    @FXML
+//    private ImageView  Vn_flag_1 = new ImageView();
+//    @FXML
+//    private ImageView  Eng_flag_1 = new ImageView();
 //    @FXML
 //    private ImageView  Vn_flag_2 = new ImageView();
 //    @FXML
 //    private ImageView  Eng_flag_2 = new ImageView();
 
     @FXML
+    AnchorPane Eng_Flag = new AnchorPane();
+    @FXML
+    AnchorPane Vn_flag = new AnchorPane();
+
+
+    @FXML
     private Button switch_flag_and_trans = new Button();
-    //uk 140,39
-    //vn 489,39
+    //uk 93/147
+    //vn 322/147
 
 
 
@@ -59,10 +66,11 @@ public class APIgoogletranslate {
     private void initialize() {
         if(check_switch == false) {
         switch_flag_and_trans.setOnMouseClicked(event ->{
-            Vn_flag_1.setLayoutX(140);
-            Vn_flag_1.setLayoutY(39);
-            Eng_flag_1.setLayoutX(489);
-            Eng_flag_1.setLayoutY(39);
+            Eng_Flag.setLayoutX(322);
+            Eng_Flag.setLayoutY(147);
+            Vn_flag.setLayoutX(93);
+            Vn_flag.setLayoutY(147);
+
             check_switch = true;
 
         });
@@ -76,13 +84,28 @@ public class APIgoogletranslate {
                     throw new RuntimeException(e);
                 }
             });
+
+//            engtext.setTextFormatter(new TextFormatter<String>((TextFormatter.Change change) -> {
+//                if(!engtext.getText().isEmpty()) {
+//                    try {
+//                    Eng_to_Vi();
+//                } catch (IOException e) {
+//                    throw new RuntimeException(e);
+//                } catch (URISyntaxException e) {
+//                    throw new RuntimeException(e);
+//                }
+//                }
+//                return change;
+//            }));
         }
         if(check_switch == true) {
             switch_flag_and_trans.setOnMouseClicked(event ->{
-                Vn_flag_1.setLayoutX(489);
-                Vn_flag_1.setLayoutY(39);
-                Eng_flag_1.setLayoutX(140);
-                Eng_flag_1.setLayoutY(39);
+                Eng_Flag.setLayoutX(93);
+                Eng_Flag.setLayoutY(147);
+                Vn_flag.setLayoutX(322);
+                Vn_flag.setLayoutY(147);
+
+
                 check_switch = false;
 
             });
@@ -98,6 +121,18 @@ public class APIgoogletranslate {
                     throw new RuntimeException(e);
                 }
             });
+
+//            engtext.focusedProperty().addListener((obs, oldValue, newValue) -> {
+//                if(newValue) {
+//                    try {
+//                        Eng_to_Vi();
+//                    } catch (IOException e) {
+//                        throw new RuntimeException(e);
+//                    } catch (URISyntaxException e) {
+//                        throw new RuntimeException(e);
+//                    }
+//                }
+//            });
 
         }
 

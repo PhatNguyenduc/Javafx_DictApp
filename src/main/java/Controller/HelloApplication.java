@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
@@ -19,10 +20,11 @@ public class HelloApplication extends Application {
         Scene scene = new Scene(root);
 
 
-        scene.getStylesheets().add(getClass().getResource("searchstyle.css").toExternalForm());
+        scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
         primarystage.setTitle("Dictionary Application");
-
-
+        String s = String.valueOf(getClass().getResource("iconandimage/kitty.png"));
+        Image icon = new Image(s);
+        primarystage.getIcons().add(icon);
         primarystage.setScene(scene);
 
 

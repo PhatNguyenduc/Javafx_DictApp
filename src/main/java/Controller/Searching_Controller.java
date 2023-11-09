@@ -12,8 +12,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import com.sun.speech.freetts.Voice;
 import com.sun.speech.freetts.VoiceManager;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -42,6 +43,9 @@ public class Searching_Controller {
     }
 
     @FXML
+    private AnchorPane head = new AnchorPane();
+
+    @FXML
     private Button sound = new Button();
 
     @FXML
@@ -62,6 +66,10 @@ public class Searching_Controller {
     {
         meaningArea.setEditable(false);
     }
+
+    @FXML
+    private ImageView sound_image = new ImageView();
+
 
     Voice voice = VoiceManager.getInstance().getVoice("kevin16");
     {
@@ -98,15 +106,15 @@ public class Searching_Controller {
 
 
         searchtext.setTextFormatter(new TextFormatter<String>((TextFormatter.Change change) -> {
-            if(searchtext.getText().isEmpty()) {
-                listviewdefault();
-
-            }
-            else
-            {
+//            if(searchtext.getText().isEmpty()) {
+//                listviewdefault();
+//
+//            }
+//            else
+//            {
                 String newText = change.getControlNewText();
                 filterData(newText);
-            }
+//            }
             return change;
         }));
 
