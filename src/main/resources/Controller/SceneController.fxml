@@ -48,6 +48,15 @@
                   <Image url="@iconandimage/icons8-dictionary-100.png" />
                </image>
             </ImageView>
+            <JFXButton layoutX="-1.0" layoutY="360.0" prefHeight="54.0" prefWidth="82.0" fx:id="flashCard">
+               <graphic>
+                  <ImageView fitHeight="45.0" fitWidth="61.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@iconandimage/8086346.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
          </children>
       </AnchorPane>
       <AnchorPane fx:id="mainAnchorPane" layoutX="83.0" prefHeight="560.0" prefWidth="741.0" />

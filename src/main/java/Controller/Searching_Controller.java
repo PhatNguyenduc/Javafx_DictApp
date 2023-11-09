@@ -55,6 +55,7 @@ public class Searching_Controller {
     @FXML
     private Button update_word = new Button();
 
+
 //    @FXML
 //    private Button API = new Button();
     @FXML
@@ -77,11 +78,10 @@ public class Searching_Controller {
 
 
 
-    public  String path = "src\\main\\java\\OUT.txt";
-    private DictionaryManagement dict = new DictionaryManagement();
+    public  String path = "src\\main\\java\\dictionaries.txt";
+    public static DictionaryManagement dict = new DictionaryManagement();
     {
         dict.insertWordFromFile(path);
-
     }
 
 
@@ -91,22 +91,21 @@ public class Searching_Controller {
     }
 
     public void initialize() {
-
+    System.gc();
 
     listView.setItems(dataList);
 
 
 
         searchtext.setTextFormatter(new TextFormatter<String>((TextFormatter.Change change) -> {
-            if(searchtext.getText().isEmpty()) {
-                listviewdefault();
-
-            }
-            else
-            {
+//            if(searchtext.getText().trim().isEmpty()) {
+//                listviewdefault();
+//            }
+//            else
+//            {
                 String newText = change.getControlNewText();
                 filterData(newText);
-            }
+//            }
             return change;
         }));
 
@@ -240,7 +239,6 @@ public class Searching_Controller {
         updatedialog.getDialogPane().getButtonTypes().addAll(update_confirm,ButtonType.CANCEL);
         updatedialog.getDialogPane().setContent(updateTF);
         updatedialog.getDialogPane().setPrefSize(400,250);
-
     }
 
 
