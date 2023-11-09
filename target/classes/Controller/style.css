@@ -6,40 +6,43 @@
     -fx-border-width: 2px 2px 2px 2px;
     -fx-background-radius: 20px;
     -fx-border-style: solid;
-    -fx-background-radius: 20px;
 
+    -fx-background-image: url(iconandimage/blue_vector.jpg);
+
+}
+
+.head {
+    -fx-background-image: url(iconandimage/headerbg.jpg);
 }
 .searchtext {
     -fx-background-radius: 5px;
+    -fx-font-size: 1.5em;
 
-    -fx-font-style: antialiased;
 }
 .listView {
     -fx-background-radius: 5px;
-    -font-style: italic;
-    -fx-font: italic;
-    -fx-font-weight: bold;
-    -fx-font-style: italic;
+    -fx-font-size: 1.5em;
+    -fx-animated: both;
+    -fx-animation-name: autofill;
+    -fx-animation-duration: 100s;
+
     -fx-background-color: whitesmoke;
 }
 
  .flag {
     -fx-background-color: deepskyblue;
      -fx-background-radius: 10px;
-     -fx-font-style: italic;
+     -fx-alignment: center;
      -fx-font-size: 20px;
  }
 
  .delete_word {
-     -fx-background-radius: 10px;
-     -fx-font-style: italic;
-     -fx-background-color: lightgreen;
-
+     -fx-border-radius: 10px;
  }
 
  .wordLabel {
      -fx-background-color: dodgerblue;
-     -fx-font-style: italic;
+
      -fx-font-size: 10px;
      -fx-background-radius: 10px;
 
@@ -47,13 +50,15 @@
 
  .mainAnchorPane {
      -fx-background-color: seashell;
+
  }
 
  .meaningArea {
-     -fx-background-color: seashell;
-     -fx-font-style: italic;
-     -fx-font-size: 20px;
-     -fx-border-color: brown;
+     -fx-font-size: 15px;
+     -fx-background-radius: 15px;
+     -fx-border-style: solid;
+     -fx-border-width: 2px;
+     -fx-border-color: black;
      -fx-border-radius: 10px;
  }
  .addAnchorPane {
@@ -61,7 +66,9 @@
      -fx-border-width: 2px 2px 2px 2px;
      -fx-background-radius: 20px;
      -fx-border-style: solid;
-     -fx-background-radius: 20px;
+     -fx-background-image: url(iconandimage/blue_vector.jpg);
+     -fx-background-size : cover;
+
 
  }
 
@@ -70,74 +77,90 @@
      -fx-background-radius: 10px;
      -fx-border-radius: 10px;
      -fx-border-color: brown;
-     -fx-font-style: italic;
-     -fx-font-style: bold;
+
+
  }
  .meaningLabel1 {
      -fx-background-color: skyblue;
      -fx-background-radius: 10px;
      -fx-border-radius: 10px;
      -fx-border-color: brown;
-     -fx-font-style: italic;
-     -fx-font-style: bold;
+
+
  }
 
  .confirm {
-     -fx-border-color: mediumaquamarine;
+     -fx-border-color: gray;
      -fx-border-radius: 10px;
      -fx-border-style: solid;
-     -fx-background-color: springgreen;
+     -fx-background-color: whitesmoke;
      -fx-background-radius: 10px;
  }
 .loglabel {
-     -fx-background-color: yellowgreen ;
+     -fx-background-color:  lightgoldenrodyellow;
     -fx-background-radius: 20px;
+
 
  }
 .logstatus {
     -fx-background-color: lightgoldenrodyellow ;
     -fx-background-radius: 20px;
-    -fx-font-style: italic;
+    -fx-alignment: center;
     -fx-font-size: 15px;
 
 
 }
 .word {
     -fx-background-radius: 10px;
-    -fx-font-style: bold;
+
     -fx-font-size: 20;
 }
 .meaning {
     -fx-background-radius: 10px;
-    -fx-font-style: bold;
+
     -fx-font-size: 20;
 
 
 }
 .update_word {
     -fx-border-radius: 10px;
-    -fx-border-color: transparent;
-    -fx-background-color: lightgreen;
     -fx-background-radius: 10px;
+    -fx-border-color: black;
 }
 .delete_word {
     -fx-border-radius: 10px;
     -fx-border-color: transparent;
-    -fx-background-color: tomato;
     -fx-background-radius: 10px;
+    -fx-alignment: center;
 }
 
 .engtext {
-    -fx-border-color : brown;
+    -fx-font-size : 25px;
+    -fx-background-radius: 50px;
+
+    -fx-border-radius: 10px;
 }
 
 .vitext {
-    -fx-border-color: brown;
+    -fx-font-size : 25px;
+    -fx-background-radius: 50px;
+
+    -fx-border-radius: 10px;
 }
 
 .trans {
-    -fx-border-color : lightgreen;
-    -fx-border-radius: 15px;
-    -fx-background-color: limegreen;
-    -fx-background-radius: 15px;
+    -fx-background-color: lavender;
+    -fx-border-color : black;
+}
+
+.api {
+    -fx-background-image: url(iconandimage/blue_vector.jpg);
+}
+.sound {
+    -fx-border-color: black;
+    -fx-border-radius: 10px;
+}
+
+.sound  .sound_image {
+
 }
