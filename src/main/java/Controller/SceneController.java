@@ -27,6 +27,7 @@ public class SceneController {
 
     public  AnchorPane getAnchorPane() {return mainAnchorPane;}
     public void initialize() {
+        System.gc();
          AddButton.setOnMouseClicked(event ->{
              showComponent("AddWord.fxml");
          });

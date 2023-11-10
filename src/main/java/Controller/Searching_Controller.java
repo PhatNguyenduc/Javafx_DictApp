@@ -85,8 +85,8 @@ public class Searching_Controller {
 
 
 
-    public  String path = "src\\main\\java\\OUT.txt";
-    private DictionaryManagement dict = new DictionaryManagement();
+    public  String path = "dictionaries_copy.txt";
+    public static DictionaryManagement dict = new DictionaryManagement();
     {
         dict.insertWordFromFile(path);
 
@@ -99,6 +99,7 @@ public class Searching_Controller {
     }
 
     public void initialize() {
+        System.gc();
 
 
     listView.setItems(dataList);
@@ -106,32 +107,12 @@ public class Searching_Controller {
 
 
         searchtext.setTextFormatter(new TextFormatter<String>((TextFormatter.Change change) -> {
-//            if(searchtext.getText().isEmpty()) {
-//                listviewdefault();
-//
-//            }
-//            else
-//            {
+
                 String newText = change.getControlNewText();
                 filterData(newText);
-//            }
             return change;
         }));
 
-//        searchtext.setOnMouseClicked(mouseEvent -> {
-//            listView.setVisible(true);
-//        });
-
-//        searchtext.focusedProperty().addListener((obs, oldValue, newValue) -> {
-//            if (!newValue && anchorPane.isFocused()) {
-//                listView.setVisible(false);
-//            }
-//        });
-
-
-//        anchorPane.setOnMouseClicked(event -> {
-//            listView.setVisible(false);
-//        });
 
         listView.setOnMouseClicked(event -> {
             String selectedWord = listView.getSelectionModel().getSelectedItem();
@@ -150,14 +131,6 @@ public class Searching_Controller {
             }
         });
 
-//        Add.setOnMouseClicked(event -> {
-//            try {
-//                switch_add(event);
-//            } catch (IOException e) {
-//                throw new RuntimeException(e);
-//            }
-//        });
-
         delete_word.setOnMouseClicked(event -> {
             deleteword();
         });
@@ -168,9 +141,14 @@ public class Searching_Controller {
             } else {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Error");
-                alert.setHeaderText("missing a word to change the meaing");
+                alert.setHeaderText("missing a word to change the meaning");
                 alert.setContentText("click in list to choose your word you want to update");
                 alert.getButtonTypes().setAll(ButtonType.OK);
+                DialogPane dialogPane = alert.getDialogPane();
+                ImageView i = new ImageView(getClass().getResource("iconandimage/icons8-error-64.png").toString());
+                alert.setGraphic(i);
+                dialogPane.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
+                dialogPane.getStyleClass().add("custom-alert");
                 alert.showAndWait();
 
             }
@@ -197,19 +175,6 @@ public class Searching_Controller {
             }
         }
         listView.setItems(filteredList);
-    }
-
-    private void listviewdefault() {
-        ObservableList<String> dlist = FXCollections.observableArrayList();
-        int size = 0;
-        for(String item : dataList) {
-            if(size > 15) {
-                break;
-            }
-            dlist.add(item);
-            size++;
-        }
-        listView.setItems(dlist);
     }
 
     private String getMeaning(String word) {
@@ -247,7 +212,12 @@ public class Searching_Controller {
         updatedialog.setHeaderText("Update meaning to your word");
         updatedialog.getDialogPane().getButtonTypes().addAll(update_confirm,ButtonType.CANCEL);
         updatedialog.getDialogPane().setContent(updateTF);
+        updatedialog.getDialogPane().setGraphic(new ImageView(getClass().getResource("iconandimage/icons8-pencil-48.png").toString()));
+        updatedialog.getDialogPane().getStylesheets().add(getClass().getResource("style.css").toExternalForm());
+        updatedialog.getDialogPane().getStyleClass().add("updatedialog");
+
         updatedialog.getDialogPane().setPrefSize(400,250);
+
 
     }
 
