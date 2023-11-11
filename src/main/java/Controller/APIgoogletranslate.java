@@ -24,14 +24,6 @@ public class APIgoogletranslate {
     @FXML
     private Button trans = new Button();
 
-//    @FXML
-//    private ImageView  Vn_flag_1 = new ImageView();
-//    @FXML
-//    private ImageView  Eng_flag_1 = new ImageView();
-//    @FXML
-//    private ImageView  Vn_flag_2 = new ImageView();
-//    @FXML
-//    private ImageView  Eng_flag_2 = new ImageView();
 
     @FXML
     AnchorPane Eng_Flag = new AnchorPane();
@@ -85,18 +77,6 @@ public class APIgoogletranslate {
                 }
             });
 
-//            engtext.setTextFormatter(new TextFormatter<String>((TextFormatter.Change change) -> {
-//                if(!engtext.getText().isEmpty()) {
-//                    try {
-//                    Eng_to_Vi();
-//                } catch (IOException e) {
-//                    throw new RuntimeException(e);
-//                } catch (URISyntaxException e) {
-//                    throw new RuntimeException(e);
-//                }
-//                }
-//                return change;
-//            }));
         }
         if(check_switch == true) {
             switch_flag_and_trans.setOnMouseClicked(event ->{
@@ -122,17 +102,6 @@ public class APIgoogletranslate {
                 }
             });
 
-//            engtext.focusedProperty().addListener((obs, oldValue, newValue) -> {
-//                if(newValue) {
-//                    try {
-//                        Eng_to_Vi();
-//                    } catch (IOException e) {
-//                        throw new RuntimeException(e);
-//                    } catch (URISyntaxException e) {
-//                        throw new RuntimeException(e);
-//                    }
-//                }
-//            });
 
         }
 

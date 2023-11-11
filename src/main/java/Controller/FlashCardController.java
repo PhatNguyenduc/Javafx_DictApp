@@ -2,6 +2,8 @@ package Controller;
 
 import javafx.animation.FadeTransition;
 import javafx.animation.RotateTransition;
+import javafx.animation.Transition;
+import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -37,7 +39,7 @@ public class FlashCardController {
         });
         rightButton.setOnMouseClicked(event -> {
             if (cur < savedWords.size()) {
-                fadeTrans();
+                right_trans();
                 cur++;
                 selected = savedWords.get(cur - 1);
                 cardLabel.setText(selected);
@@ -46,7 +48,7 @@ public class FlashCardController {
         });
         leftButton.setOnMouseClicked(event -> {
             if (cur > 1) {
-                fadeTrans();
+                left_trans();
                 cur--;
                 selected = savedWords.get(cur - 1);
                 cardLabel.setText(selected);
@@ -77,9 +79,28 @@ public class FlashCardController {
         });
     }
     private void fadeTrans() {
-        FadeTransition fade = new FadeTransition(Duration.seconds(0.8), flashcardPane);
+        FadeTransition fade = new FadeTransition(Duration.seconds(0.5), flashcardPane);
         fade.setFromValue(0);
         fade.setToValue(1);
         fade.play();
     }
+    private void left_trans() {
+        TranslateTransition translateTransition = new TranslateTransition(Duration.millis(400), flashcardPane);
+        translateTransition.setFromX(-flashcardPane.getWidth());
+        translateTransition.setToX(0);
+        translateTransition.setAutoReverse(true);
+        fadeTrans();
+
+        translateTransition.play();
+    }
+    private void right_trans() {
+        TranslateTransition translateTransition = new TranslateTransition(Duration.millis(400), flashcardPane);
+        translateTransition.setFromX(flashcardPane.getWidth());
+        translateTransition.setToX(0);
+        translateTransition.setAutoReverse(true);
+        fadeTrans();
+        translateTransition.play();
+    }
 }
+
+
