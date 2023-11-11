@@ -18,6 +18,8 @@ import Dictionary_commandline.*;
 import trie.*;
 import java.io.IOException;
 
+import static Controller.SceneController.dict;
+
 
 public class AddWord {
 
@@ -74,14 +76,14 @@ public class AddWord {
         String newWord = word.getText().toString().toLowerCase().trim();
         String newMeaning = meaning.getText().toString().toLowerCase().trim();
 
-        if (Searching_Controller.dict.getDictionary().haveWord(newWord)) {
+        if (dict.getDictionary().haveWord(newWord)) {
             String l = "Word exists in dictionary, use update if you want to change the meaning of the word";
             logstatus.setText(l);
 
         } else {
 
-            Searching_Controller.dict.getDictionary().insertWord(newWord,newMeaning);
-            Searching_Controller.dict.exportToFile(path);
+            dict.getDictionary().insertWord(newWord,newMeaning);
+            dict.exportToFile(path);
             logstatus.setText("Success adding");
         }
 
@@ -89,15 +91,15 @@ public class AddWord {
     public void setUpdate() {
         String w = update_word.getText().toString().toLowerCase().trim();
         String m = update_meaning.getText().toString().toLowerCase().trim();
-        if (!Searching_Controller.dict.getDictionary().haveWord(w)) {
+        if (!dict.getDictionary().haveWord(w)) {
             String l = "Word doesnt in dictionary ,add them to";
             logstatus.setText(l);
 
         }
         else {
-            Searching_Controller.dict.updateWord(w,m);
+            dict.updateWord(w,m);
             logstatus.setText("update Success");
-            Searching_Controller.dict.exportToFile(path);
+            dict.exportToFile(path);
             System.gc();
         }
     }

@@ -80,7 +80,12 @@ public class GameController {
     private Button buttonHint = new Button();
     @FXML
     private Label labelInfoHint = new Label();
-
+    @FXML
+    private Button cfAnswer = new Button();
+    @FXML
+    private TextField answerTextField = new TextField();
+    private int image = 0;
+    private String key = "";
     private String path = "src\\main\\java\\question.txt";
     private List<List<String>> questionList = questions(path);
     private boolean checkFake1 = true;
@@ -125,6 +130,8 @@ public class GameController {
         fake7.setVisible(checkFake7);
         fake8.setVisible(checkFake8);
         fake9.setVisible(checkFake9);
+        cfAnswer.setVisible(true);
+        answerTextField.setVisible(true);
     }
     private void setUpInitialize() {
         questionPane.setVisible(false);
@@ -138,10 +145,11 @@ public class GameController {
         imageView7.setVisible(false);
         imageView8.setVisible(false);
         imageView9.setVisible(false);
-        int img = randomImage();
         hint.clear();
         trueQuestion = -1;
-        setupImage(img);
+        cfAnswer.setVisible(false);
+        answerTextField.setVisible(false);
+        setupImage();
     }
     private int randomImage () {
         return 1;
@@ -152,8 +160,8 @@ public class GameController {
         int randomNumber = random.nextInt(100);
         return randomNumber % questionList.size();
     }
-    private void setupImage(int img) {
-        if (img == 1) {
+    private void setupImage() {
+        if (image == 1) {
             image1 = new Image(getClass().getResource("iconandimage/icons8-game-64.png").toString());
             image2 = new Image(getClass().getResource("iconandimage/icons8-game-64.png").toString());
             image3 = new Image(getClass().getResource("iconandimage/icons8-game-64.png").toString());
@@ -166,7 +174,8 @@ public class GameController {
             hint.add("1");
             hint.add("2");
             hint.add("3");
-        } else if (img == 2) {
+            key = "cho";
+        } else if (image == 2) {
             image1 = new Image(getClass().getResource("iconandimage/icons8-google-translate-100.png").toString());
             image2 = new Image(getClass().getResource("iconandimage/icons8-google-translate-100.png").toString());
             image3 = new Image(getClass().getResource("iconandimage/icons8-google-translate-100.png").toString());
@@ -179,6 +188,7 @@ public class GameController {
             hint.add("a");
             hint.add("b");
             hint.add("c");
+            key = "meo";
         }
     }
     private void setupHint(int i) {
@@ -242,6 +252,8 @@ public class GameController {
     }
 
     private void setActionAnswer(int j) {
+        cfAnswer.setVisible(false);
+        answerTextField.setVisible(false);
         int i = randomQuestion();
         setQuestionList(i);
         questionPane.setVisible(true);
@@ -285,6 +297,7 @@ public class GameController {
     }
 
     public void initialize() {
+        image = 1;
         setUpInitialize();
         fake1.setOnMouseClicked(event -> {
             setActionAnswer(1);
@@ -312,6 +325,25 @@ public class GameController {
         });
         fake9.setOnMouseClicked(event -> {
             setActionAnswer(9);
+        });
+        cfAnswer.setOnMouseClicked(event ->{
+            if (answerTextField.getText().equals(key)) {
+                showTrueAnswerAlert();
+                checkFake1 = true;
+                checkFake2 = true;
+                checkFake3 = true;
+                checkFake4 = true;
+                checkFake5 = true;
+                checkFake6 = true;
+                checkFake7 = true;
+                checkFake8 = true;
+                checkFake9 = true;
+                setVisibleCheck();
+                image = 3 - image;
+                setUpInitialize();
+            } else {
+                showWrongAnswerAlert();
+            }
         });
     }
 
@@ -354,6 +386,18 @@ public class GameController {
         alert.setTitle("Câu trả lời sai");
         alert.setHeaderText("Bạn đã chọn sai đáp án.");
         alert.setContentText("Hãy thử lại hoặc xem đáp án đúng.");
+        ButtonType closeButton = new ButtonType("Đóng", ButtonBar.ButtonData.OK_DONE);
+        alert.getButtonTypes().setAll(closeButton);
+        alert.showAndWait();
+    }
+
+    private void showTrueAnswerAlert() {
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.initStyle(StageStyle.UTILITY);
+        alert.initModality(Modality.APPLICATION_MODAL);
+        alert.setTitle("Câu trả lời đúng");
+        alert.setHeaderText("Bạn đã chọn đúng đáp án.");
+        alert.setContentText("Chúc mừng! Hãy chơi thêm ván mới nào");
         ButtonType closeButton = new ButtonType("Đóng", ButtonBar.ButtonData.OK_DONE);
         alert.getButtonTypes().setAll(closeButton);
         alert.showAndWait();
