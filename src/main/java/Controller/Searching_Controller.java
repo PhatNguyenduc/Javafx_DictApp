@@ -1,41 +1,27 @@
 package Controller;
 
-import Dictionary_commandline.DictionaryManagement;
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import com.sun.speech.freetts.Voice;
 import com.sun.speech.freetts.VoiceManager;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
-import javafx.stage.Stage;
-import trie.TrieNode;
-
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
 import static Controller.SceneController.dict;
-
+import static javafx.collections.FXCollections.observableArrayList;
 
 public class Searching_Controller {
-
     public  String path = "src\\main\\java\\dictionaries.txt";
     public String pathSavedWords = "src\\main\\java\\savedWord.txt";
+    public String pathHistory = "src\\main\\java\\history.txt";
     public static String getWord = " ";
-
-
     @FXML
     private ListView<String> listView = new ListView<String>();
-
 
     @FXML
     private TextField searchtext = new TextField();
@@ -46,17 +32,11 @@ public class Searching_Controller {
     {
         flag.setVisible(false);
     }
-
     @FXML
     private AnchorPane head = new AnchorPane();
 
     @FXML
     private Button sound = new Button();
-
-    @FXML
-    private Button game = new Button();
-    @FXML
-    private Button Add = new Button();
     @FXML
     public  AnchorPane anchorPane = new AnchorPane();
     @FXML
@@ -68,57 +48,55 @@ public class Searching_Controller {
     private Image setImageSaveWord;
     @FXML
     private ImageView imageSaveWord = new ImageView();
-
-
-    //    @FXML
-//    private Button API = new Button();
     @FXML
     private TextArea meaningArea = new TextArea();
     {
         meaningArea.setEditable(false);
     }
-
     @FXML
     private ImageView sound_image = new ImageView();
-
-
+    private List<String> historyWords;
+    {
+        historyWords = new ArrayList<String>();
+        insertWordFromFile(pathHistory, historyWords);
+    }
     Voice voice = VoiceManager.getInstance().getVoice("kevin16");
     {
         voice.setPitch(120.0f);
         voice.setRate(145);
         voice.setVolume(80);
     }
-
-
-
-
-
-
-    ObservableList<String> dataList = FXCollections.observableArrayList();
+    ObservableList<String> dataList = observableArrayList();
     {
         dataList.addAll(dict.getAllWords());
+    }
+    ObservableList<String> historyList = observableArrayList();
+    {
+        historyList.addAll(historyWords);
     }
     public static List<String> savedWords;
     {
         savedWords = new ArrayList<String>();
-        insertWordFromFile(pathSavedWords);
-        print();
+        insertWordFromFile(pathSavedWords, savedWords);
         setIsSavedWords();
     }
 
     public void initialize() {
-//    setImage(0);
         setImageSaveWord = new Image(getClass().getResource("iconandimage/star.png").toString());
         imageSaveWord.setImage(setImageSaveWord);
-        listView.setItems(dataList);
+        listView.setItems(historyList);
 
         searchtext.setTextFormatter(new TextFormatter<String>((TextFormatter.Change change) -> {
-            String newText = change.getControlNewText();
-            filterData(newText);
+            if (searchtext.getText().trim().isEmpty()) {
+                ObservableList<String> List = observableArrayList();
+                List.addAll(historyWords);
+                listView.setItems(List);
+            } else {
+                String newText = change.getControlNewText();
+                filterData(newText);
+            }
             return change;
         }));
-
-
 
         listView.setOnMouseClicked(event -> {
             String selectedWord = listView.getSelectionModel().getSelectedItem();
@@ -129,6 +107,10 @@ public class Searching_Controller {
                 flag.setVisible(true);
                 getWord = selectedWord;
                 setImage();
+                if (!historyWords.contains(selectedWord)) {
+                    historyWords.add(0,selectedWord);
+                    exportToFile(pathHistory, historyWords);
+                }
             }
         });
         sound.setOnMouseClicked(event -> {
@@ -172,19 +154,17 @@ public class Searching_Controller {
             }
             setImage();
         });
-
-
     }
     private void deleteSavedWord() {
         dict.getDictionary().getNode(getWord).setIsSaved(false);
         savedWords.remove(getWord);
-        exportToFile(pathSavedWords);
+        exportToFile(pathSavedWords, savedWords);
     }
 
     private void insertSavedWord() {
         dict.getDictionary().getNode(getWord).setIsSaved(true);
-        savedWords.add(getWord);
-        exportToFile(pathSavedWords);
+        savedWords.add(0,getWord);
+        exportToFile(pathSavedWords, savedWords);
     }
     private void setImage() {
         if (dict.getDictionary().getNode(getWord).getIsSaved()) {
@@ -195,25 +175,11 @@ public class Searching_Controller {
         imageSaveWord.setImage(setImageSaveWord);
     }
     private void filterData(String prefix) {
-        ObservableList<String> filteredList = FXCollections.observableArrayList();
+        ObservableList<String> filteredList = observableArrayList();
         List<String> prefixList = dict.getSuggest(prefix);
         filteredList.addAll(prefixList);
         listView.setItems(filteredList);
     }
-
-    private void listviewdefault() {
-        ObservableList<String> dlist = FXCollections.observableArrayList();
-        int size = 0;
-        for(String item : dataList) {
-            if(size > 15) {
-                break;
-            }
-            dlist.add(item);
-            size++;
-        }
-        listView.setItems(dlist);
-    }
-
     private String getMeaning(String word) {
         return dict.getWordMeaning(word);
     }
@@ -237,7 +203,6 @@ public class Searching_Controller {
     }
     @FXML
     private TextArea updateTF = new TextArea();
-
     ButtonType update_confirm = ButtonType.OK;
     @FXML
     Dialog updatedialog = new Dialog();
@@ -249,14 +214,13 @@ public class Searching_Controller {
         updatedialog.getDialogPane().setPrefSize(400,250);
 
     }
-
-    public void exportToFile(String path) {
+    public void exportToFile(String path, List<String> words) {
         try {
             FileWriter fileWriter = new FileWriter(path);
             BufferedWriter buf = new BufferedWriter(fileWriter);
             // write to file from current dictionary
-            for (String word : savedWords) {
-                buf.write(word.toLowerCase());
+            for (String word : words) {
+                buf.write(word.toLowerCase().trim());
                 buf.newLine();
             }
             buf.close();
@@ -264,13 +228,13 @@ public class Searching_Controller {
             System.out.println("Something went wrong: " + e);
         }
     }
-    public void insertWordFromFile(String path) {
+    public void insertWordFromFile(String path, List<String> words) {
         try {
             FileReader fileReader = new FileReader(path);
             BufferedReader buf = new BufferedReader(fileReader);
             String line;
             while ((line = buf.readLine()) != null) {
-                savedWords.add(line);
+                words.add(line.trim());
             }
             // close file
             buf.close();
@@ -285,12 +249,6 @@ public class Searching_Controller {
             if (dict.getDictionary().haveWord(word)) {
                 dict.getDictionary().getNode(word).setIsSaved(true);
             }
-        }
-    }
-
-    private void print() {
-        for (String word : savedWords) {
-            System.out.println(word);
         }
     }
 }

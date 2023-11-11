@@ -1,36 +1,17 @@
 package Controller;
 
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
-import javafx.stage.Stage;
-
-import Dictionary_commandline.*;
-import trie.*;
-import java.io.IOException;
-
 import static Controller.SceneController.dict;
 
-
 public class AddWord {
-
     public String path = "src\\main\\java\\dictionaries.txt";
-
-
-
     @FXML
     public AnchorPane addAnchorPane = new AnchorPane();
-
-
     @FXML
     private Label wordLabel1 = new Label();
     @FXML
@@ -58,20 +39,13 @@ public class AddWord {
     private TextField update_word = new TextField();
 
     public void initialize() {
-
-
         confirm.setOnMouseClicked(mouseEvent -> {
             addword();
         });
-
         update.setOnMouseClicked(mouseEvent -> {
-           setUpdate();
+            setUpdate();
         });
-
     }
-
-
-
     public void addword() {
         String newWord = word.getText().toString().toLowerCase().trim();
         String newMeaning = meaning.getText().toString().toLowerCase().trim();

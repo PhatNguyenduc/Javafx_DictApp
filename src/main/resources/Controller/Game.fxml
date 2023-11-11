@@ -13,49 +13,31 @@
 <AnchorPane prefHeight="560.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.GameController">
    <children>
       <ImageView fx:id="imageView1" fitHeight="120.0" fitWidth="120.0" layoutX="62.0" layoutY="58.0" onMouseClicked="#initialize" pickOnBounds="true" preserveRatio="true">
-         <!--         <image>-->
-         <!--            <Image url="@iconandimage/8086346.png" />-->
-         <!--         </image>-->
+
       </ImageView>
       <ImageView fx:id="imageView2" fitHeight="120.0" fitWidth="120.0" layoutX="182.0" layoutY="58.0" pickOnBounds="true" preserveRatio="true">
-         <!--         <image>-->
-         <!--            <Image url="@iconandimage/8086346.png" />-->
-         <!--         </image>-->
+
       </ImageView>
       <ImageView fx:id="imageView3" fitHeight="120.0" fitWidth="120.0" layoutX="302.0" layoutY="58.0" pickOnBounds="true" preserveRatio="true">
-         <!--         <image>-->
-         <!--            <Image url="@iconandimage/8086346.png" />-->
-         <!--         </image>-->
+
       </ImageView>
       <ImageView fx:id="imageView4" fitHeight="120.0" fitWidth="120.0" layoutX="62.0" layoutY="178.0" pickOnBounds="true" preserveRatio="true">
-         <!--         <image>-->
-         <!--            <Image url="@iconandimage/8086346.png" />-->
-         <!--         </image>-->
+
       </ImageView>
       <ImageView fx:id="imageView5" fitHeight="120.0" fitWidth="120.0" layoutX="182.0" layoutY="178.0" pickOnBounds="true" preserveRatio="true">
-         <!--         <image>-->
-         <!--            <Image url="@iconandimage/8086346.png" />-->
-         <!--         </image>-->
+
       </ImageView>
       <ImageView fx:id="imageView6" fitHeight="120.0" fitWidth="120.0" layoutX="302.0" layoutY="178.0" pickOnBounds="true" preserveRatio="true">
-         <!--         <image>-->
-         <!--            <Image url="@iconandimage/8086346.png" />-->
-         <!--         </image>-->
+
       </ImageView>
       <ImageView fx:id="imageView7" fitHeight="120.0" fitWidth="120.0" layoutX="62.0" layoutY="298.0" pickOnBounds="true" preserveRatio="true">
-         <!--         <image>-->
-         <!--            <Image url="@iconandimage/8086346.png" />-->
-         <!--         </image>-->
+
       </ImageView>
       <ImageView fx:id="imageView8" fitHeight="120.0" fitWidth="120.0" layoutX="182.0" layoutY="298.0" pickOnBounds="true" preserveRatio="true">
-         <!--         <image>-->
-         <!--            <Image url="@iconandimage/8086346.png" />-->
-         <!--         </image>-->
+
       </ImageView>
       <ImageView fx:id="imageView9" fitHeight="120.0" fitWidth="120.0" layoutX="302.0" layoutY="298.0" pickOnBounds="true" preserveRatio="true">
-         <!--         <image>-->
-         <!--            <Image url="@iconandimage/8086346.png" />-->
-         <!--         </image>-->
+
       </ImageView>
       <AnchorPane fx:id="questionPane" layoutY="1.0" prefHeight="560.0" prefWidth="752.0" style="-fx-background-color: lightblue;">
          <children>

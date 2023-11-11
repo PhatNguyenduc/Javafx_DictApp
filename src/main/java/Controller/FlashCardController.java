@@ -1,22 +1,15 @@
 package Controller;
 
+import javafx.animation.FadeTransition;
 import javafx.animation.RotateTransition;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
 import javafx.scene.layout.StackPane;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
 import javafx.scene.transform.Rotate;
 import javafx.util.Duration;
-
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.ResourceBundle;
+import static Controller.SceneController.dict;
+import static Controller.Searching_Controller.savedWords;
 
 public class FlashCardController {
     @FXML
@@ -25,51 +18,68 @@ public class FlashCardController {
     private Label cardLabel = new Label();
     private boolean isFront = true;
     private String selected = "";
+    private int cur = 1;
+
     @FXML
-    private ListView<String> listView = new ListView<String>();
-    ObservableList<String> dataList = FXCollections.observableArrayList();
-    {
-        dataList.add("1");
-        dataList.add("2");
-        dataList.add("3");
-    }
+    private Button leftButton = new Button();
+    @FXML
+    private Button rightButton = new Button();
+    @FXML
+    private Label curLabel = new Label();
+
+
     public void initialize() {
         cardLabel.setStyle("-fx-font-size: 20px;");
-        listView.setItems(dataList);
-        flashcardPane.setStyle("-fx-background-color: lightgreen;");
+        cardLabel.setText(savedWords.get(0));
+        curLabel.setText(Integer.toString(cur) + "/" + Integer.toString(savedWords.size()));
         flashcardPane.setOnMouseClicked(event -> {
             rotatePane();
         });
-        listView.setOnMouseClicked(event -> {
-            String selectedWord = listView.getSelectionModel().getSelectedItem();
-            if(selectedWord!= null) {
-                cardLabel.setText(selectedWord);
-                selected = selectedWord;
-                isFront = true;
+        rightButton.setOnMouseClicked(event -> {
+            if (cur < savedWords.size()) {
+                fadeTrans();
+                cur++;
+                selected = savedWords.get(cur - 1);
+                cardLabel.setText(selected);
+                curLabel.setText(Integer.toString(cur) + "/" + Integer.toString(savedWords.size()));
+            }
+        });
+        leftButton.setOnMouseClicked(event -> {
+            if (cur > 1) {
+                fadeTrans();
+                cur--;
+                selected = savedWords.get(cur - 1);
+                cardLabel.setText(selected);
+                curLabel.setText(Integer.toString(cur) + "/" + Integer.toString(savedWords.size()));
             }
         });
     }
     public void rotatePane() {
         cardLabel.setVisible(false);
-        RotateTransition rotateTransition = new RotateTransition(Duration.seconds(1), flashcardPane);
+        RotateTransition rotateTransition = new RotateTransition(Duration.seconds(0.3), flashcardPane);
         rotateTransition.setAxis(Rotate.Y_AXIS);
         rotateTransition.setFromAngle(0);
         rotateTransition.setToAngle(180);
         rotateTransition.play();
-        RotateTransition rotate = new RotateTransition(Duration.seconds(1), cardLabel);
+        RotateTransition rotate = new RotateTransition(Duration.seconds(0.3), cardLabel);
         rotate.setAxis(Rotate.Y_AXIS);
         rotate.setFromAngle(0);
         rotate.setToAngle(180);
         rotate.play();
         rotate.setOnFinished(e -> {
-
             if (isFront) {
-                cardLabel.setText("Nghĩa");
+                cardLabel.setText(dict.getWordMeaning(selected));
             } else {
                 cardLabel.setText(selected);
             }
             cardLabel.setVisible(true);
             isFront = !isFront;
         });
+    }
+    private void fadeTrans() {
+        FadeTransition fade = new FadeTransition(Duration.seconds(0.8), flashcardPane);
+        fade.setFromValue(0);
+        fade.setToValue(1);
+        fade.play();
     }
 }

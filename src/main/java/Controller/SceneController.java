@@ -4,10 +4,8 @@ import Dictionary_commandline.DictionaryManagement;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
-
 import java.io.IOException;
 
 public class SceneController {
@@ -30,8 +28,6 @@ public class SceneController {
         dict = new DictionaryManagement();
         dict.insertWordFromFile("src\\main\\java\\dictionaries.txt");
     }
-
-    public  AnchorPane getAnchorPane() {return mainAnchorPane;}
     public void initialize() {
         AddButton.setOnMouseClicked(event ->{
             showComponent("AddWord.fxml");
@@ -50,7 +46,6 @@ public class SceneController {
             showComponent("Game.fxml");
         });
     }
-
     private void setNode( Node node ) {
         mainAnchorPane.getChildren().clear();
         mainAnchorPane.getChildren().add((Node) node);
@@ -64,5 +59,4 @@ public class SceneController {
             e.printStackTrace();
         }
     }
-
 }
