@@ -6,8 +6,8 @@
     -fx-border-width: 2px 2px 2px 2px;
     -fx-background-radius: 20px;
     -fx-border-style: solid;
-
     -fx-background-image: url(iconandimage/blue_vector.jpg);
+    perspective: 1000px;
 
 }
 
@@ -163,4 +163,26 @@
 
 .sound  .sound_image {
 
+}
+
+
+.custom-alert {
+    -fx-background-color: black; /* Background color */
+    -fx-background-image: url(iconandimage/bg.jpg);
+    -fx-border-color: black; /* Border color */
+    -fx-border-width: 1px; /* Border width */
+    -fx-border-radius: 5px; /* Border radius */
+
+}
+
+.custom-alert .label {
+    -fx-text-fill: black; /* Text color */
+    -fx-font-size: 12px; /* Font size */
+}
+
+.updatedialog {
+    -fx-font-size: 12px;
+    -fx-background-image: url(iconandimage/bg.jpg);
+    -fx-border-color: black;
+    -fx-border-radius: 10px;
 }
