@@ -54,10 +54,15 @@ public class FlashCardController {
         RotateTransition rotateTransition = new RotateTransition(Duration.seconds(1), flashcardPane);
         rotateTransition.setAxis(Rotate.Y_AXIS);
         rotateTransition.setFromAngle(0);
-        rotateTransition.setToAngle(360);
+        rotateTransition.setToAngle(180);
         rotateTransition.play();
+        RotateTransition rotate = new RotateTransition(Duration.seconds(1), cardLabel);
+        rotate.setAxis(Rotate.Y_AXIS);
+        rotate.setFromAngle(0);
+        rotate.setToAngle(180);
+        rotate.play();
+        rotate.setOnFinished(e -> {
 
-        rotateTransition.setOnFinished(e -> {
             if (isFront) {
                 cardLabel.setText("Nghĩa");
             } else {
