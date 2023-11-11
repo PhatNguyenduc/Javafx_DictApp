@@ -190,3 +190,12 @@
 .flip-card {
     -fx-background-image: url(iconandimage/test_coloer.png);
 }
+
+.guesspanel {
+    -fx-background-image: url(iconandimage/test_coloer.png);
+    -fx-font-size: 40;
+}
+
+.guess {
+    -fx-background-image: url(iconandimage/blue_vector.jpg);
+}

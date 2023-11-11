@@ -20,6 +20,8 @@ public class SceneController {
 
     @FXML
     private AnchorPane mainAnchorPane = new AnchorPane();
+    @FXML
+    private Button guessButton = new Button();
 
     @FXML
     private Button flashCard = new Button();
@@ -44,6 +46,9 @@ public class SceneController {
         });
         gameButton.setOnMouseClicked(event -> {
             showComponent("Game.fxml");
+        });
+        guessButton.setOnMouseClicked(event -> {
+            showComponent("Guessgame.fxml");
         });
     }
     private void setNode( Node node ) {

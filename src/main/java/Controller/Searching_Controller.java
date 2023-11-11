@@ -86,17 +86,16 @@ public class Searching_Controller {
         imageSaveWord.setImage(setImageSaveWord);
         listView.setItems(historyList);
 
-        searchtext.setTextFormatter(new TextFormatter<String>((TextFormatter.Change change) -> {
-            if (searchtext.getText().trim().isEmpty()) {
+        searchtext.setOnKeyTyped(keyEvent -> {
+            if (searchtext.getText().isEmpty()) {
                 ObservableList<String> List = observableArrayList();
                 List.addAll(historyWords);
                 listView.setItems(List);
             } else {
-                String newText = change.getControlNewText();
+                String newText = searchtext.getText().trim();
                 filterData(newText);
             }
-            return change;
-        }));
+        });
 
         listView.setOnMouseClicked(event -> {
             String selectedWord = listView.getSelectionModel().getSelectedItem();
@@ -129,7 +128,7 @@ public class Searching_Controller {
             } else {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Error");
-                alert.setHeaderText("missing a word to change the meaing");
+                alert.setHeaderText("missing a word to change the meaning");
                 alert.setContentText("click in list to choose your word you want to update");
                 alert.getButtonTypes().setAll(ButtonType.OK);
                 alert.showAndWait();
@@ -147,12 +146,21 @@ public class Searching_Controller {
         });
 
         save_word.setOnMouseClicked(event -> {
-            if (dict.getDictionary().getNode(getWord).getIsSaved()) {
-                deleteSavedWord();
-            } else {
-                insertSavedWord();
+            try {
+                if (dict.getDictionary().getNode(getWord).getIsSaved()) {
+                    deleteSavedWord();
+                } else {
+                    insertSavedWord();
+                }
+                setImage();
+            } catch (Exception e) {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setHeaderText("Missing a valid word.");
+                alert.setContentText("Choose a word to add in your favorite.");
+                alert.getButtonTypes().setAll(ButtonType.OK);
+                alert.showAndWait();
             }
-            setImage();
+
         });
     }
     private void deleteSavedWord() {
