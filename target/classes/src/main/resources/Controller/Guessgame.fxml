@@ -15,14 +15,14 @@
                 <Image url="@iconandimage/a_game.png" />
             </image>
         </ImageView>
-        <Label fx:id="contentLabel" alignment="CENTER" layoutX="204.0" layoutY="202.0" prefHeight="230.0" prefWidth="342.0" styleClass="guesspanel" stylesheets="@style.css" text="Label" />
+        <Label fx:id="contentLabel" alignment="CENTER" layoutX="204.0" layoutY="202.0" prefHeight="230.0" prefWidth="342.0" styleClass="guesspanel" stylesheets="@style.css" text="Label" textAlignment="CENTER" wrapText="true" />
         <TextField fx:id="enterTF" layoutX="204.0" layoutY="442.0" prefHeight="38.0" prefWidth="342.0">
             <font>
                 <Font size="20.0" />
             </font></TextField>
         <AnchorPane layoutX="204.0" layoutY="140.0" prefHeight="46.0" prefWidth="98.0" style="-fx-border-color: black; -fx-border-radius: 10;">
             <children>
-                <Label alignment="CENTER" prefHeight="46.0" prefWidth="61.0" text="Level">
+                <Label alignment="CENTER" prefHeight="46.0" prefWidth="61.0" text="Stage">
                     <font>
                         <Font name="Arial" size="20.0" />
                     </font>

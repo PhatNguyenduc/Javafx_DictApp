@@ -1,4 +1,6 @@
 
+
+
 .anchorPane {
     -fx-background-color:transparent;
     -fx-border-width: 2px 2px 2px 2px;
@@ -6,17 +8,17 @@
     -fx-border-style: solid;
     -fx-background-image: url(iconandimage/blue_vector.jpg);
     perspective: 1000px;
+
 }
 
 .head {
     -fx-background-image: url(iconandimage/headerbg.jpg);
 }
-
 .searchtext {
     -fx-background-radius: 5px;
     -fx-font-size: 1.5em;
-}
 
+}
 .listView {
     -fx-background-radius: 5px;
     -fx-font-size: 1.5em;
@@ -40,12 +42,15 @@
 
  .wordLabel {
      -fx-background-color: dodgerblue;
+
      -fx-font-size: 10px;
      -fx-background-radius: 10px;
+
  }
 
  .mainAnchorPane {
      -fx-background-color: seashell;
+
  }
 
  .meaningArea {
@@ -56,7 +61,6 @@
      -fx-border-color: black;
      -fx-border-radius: 10px;
  }
-
  .addAnchorPane {
      -fx-background-color:transparent;
      -fx-border-width: 2px 2px 2px 2px;
@@ -64,6 +68,8 @@
      -fx-border-style: solid;
      -fx-background-image: url(iconandimage/blue_vector.jpg);
      -fx-background-size : cover;
+
+
  }
 
  .wordLabel1 {
@@ -71,13 +77,16 @@
      -fx-background-radius: 10px;
      -fx-border-radius: 10px;
      -fx-border-color: brown;
- }
 
+
+ }
  .meaningLabel1 {
      -fx-background-color: skyblue;
      -fx-background-radius: 10px;
      -fx-border-radius: 10px;
      -fx-border-color: brown;
+
+
  }
 
  .confirm {
@@ -87,35 +96,37 @@
      -fx-background-color: whitesmoke;
      -fx-background-radius: 10px;
  }
-
 .loglabel {
      -fx-background-color:  lightgoldenrodyellow;
     -fx-background-radius: 20px;
- }
 
+
+ }
 .logstatus {
     -fx-background-color: lightgoldenrodyellow ;
     -fx-background-radius: 20px;
     -fx-alignment: center;
     -fx-font-size: 15px;
-}
 
+
+}
 .word {
     -fx-background-radius: 10px;
+
     -fx-font-size: 20;
 }
-
 .meaning {
     -fx-background-radius: 10px;
-    -fx-font-size: 20;
-}
 
+    -fx-font-size: 20;
+
+
+}
 .update_word {
     -fx-border-radius: 10px;
     -fx-background-radius: 10px;
     -fx-border-color: black;
 }
-
 .delete_word {
     -fx-border-radius: 10px;
     -fx-border-color: transparent;
@@ -126,12 +137,14 @@
 .engtext {
     -fx-font-size : 25px;
     -fx-background-radius: 50px;
+
     -fx-border-radius: 10px;
 }
 
 .vitext {
     -fx-font-size : 25px;
     -fx-background-radius: 50px;
+
     -fx-border-radius: 10px;
 }
 
@@ -143,11 +156,15 @@
 .api {
     -fx-background-image: url(iconandimage/blue_vector.jpg);
 }
-
 .sound {
     -fx-border-color: black;
     -fx-border-radius: 10px;
 }
+
+.sound  .sound_image {
+
+}
+
 
 .custom-alert {
     -fx-background-color: black; /* Background color */
@@ -155,6 +172,7 @@
     -fx-border-color: black; /* Border color */
     -fx-border-width: 1px; /* Border width */
     -fx-border-radius: 5px; /* Border radius */
+
 }
 
 .custom-alert .label {
@@ -167,6 +185,10 @@
     -fx-background-image: url(iconandimage/bg.jpg);
     -fx-border-color: black;
     -fx-border-radius: 10px;
+}
+
+.flip-card {
+    -fx-background-image: url(iconandimage/test_coloer.png);
 }
 
 .hintPane {
@@ -182,8 +204,11 @@
 .guess {
     -fx-background-image: url(iconandimage/blue_vector.jpg);
     -fx-border-color: black;
+
+
 }
 
 .custom-alert-button {
-    -fx-translate-x: -60;
+    /*-fx-translate-x: -120px;*/
+    -fx-translate-x: -50;
 }

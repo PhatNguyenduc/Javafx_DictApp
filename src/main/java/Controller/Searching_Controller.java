@@ -83,6 +83,7 @@ public class Searching_Controller {
     }
 
     public void initialize() {
+        System.gc();
         setImageSaveWord = new Image(getClass().getResource("iconandimage/star.png").toString());
         imageSaveWord.setImage(setImageSaveWord);
         listView.setItems(historyList);

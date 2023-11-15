@@ -40,6 +40,7 @@ public class ReviewVocab {
     private boolean check = false;
 
     private void setUpInitialize() {
+        System.gc();
         if (trueAnswer == savedWords.size()) {
             showTrueAnswerAlert();
             trueAnswer = 0;

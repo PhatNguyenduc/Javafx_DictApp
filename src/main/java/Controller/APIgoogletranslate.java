@@ -28,6 +28,7 @@ public class APIgoogletranslate {
 
     @FXML
     private void initialize() {
+        System.gc();
         setUpInitialize();
         switch_flag_and_trans.setOnMouseClicked(event -> {
             if (check_switch) {

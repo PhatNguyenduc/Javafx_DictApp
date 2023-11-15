@@ -28,6 +28,7 @@ public class FlashCardController {
     private int cur = 1;
 
     public void initialize() {
+        System.gc();
         cardLabel.setStyle("-fx-font-size: 20px;");
         cardLabel.setText(savedWords.get(0));
         curLabel.setText(Integer.toString(cur) + "/" + Integer.toString(savedWords.size()));

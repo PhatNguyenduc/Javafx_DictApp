@@ -347,6 +347,7 @@ public class GameController {
     }
 
     public void initialize() {
+        System.gc();
         image = randomImage();
         setUpInitialize();
         fake1.setOnMouseClicked(event -> {

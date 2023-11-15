@@ -29,6 +29,7 @@ public class Guessgame {
     private int i = 0;
 
     public void initialize() {
+        System.gc();
         contentLabel.setText(qList.get(0));
         scoreLabel.setText(Integer.toString(score));
         levelLabel.setText(Integer.toString(i + 1));

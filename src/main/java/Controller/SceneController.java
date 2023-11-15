@@ -34,6 +34,7 @@ public class SceneController {
     }
 
     public void initialize() {
+        System.gc();
         AddButton.setOnMouseClicked(event ->{
             showComponent("AddWord.fxml");
         });

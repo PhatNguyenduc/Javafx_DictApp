@@ -35,6 +35,7 @@ public class AddWord {
     private TextField update_word = new TextField();
 
     public void initialize() {
+        System.gc();
         confirm.setOnMouseClicked(mouseEvent -> {
             addword();
         });
