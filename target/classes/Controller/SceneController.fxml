@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="560.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.SceneController">
+   <children>
+      <AnchorPane prefHeight="560.0" prefWidth="70.0" style="-fx-background-color: lightblue;">
+         <children>
+            <JFXButton fx:id="APIButton" layoutX="2.0" layoutY="262.0" prefHeight="32.0" prefWidth="74.0" text=" ">
+               <graphic>
+                  <ImageView fitHeight="48.0" fitWidth="59.0" translateX="3.0">
+                     <image>
+                        <Image url="@iconandimage/icons8-google-translate-100.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></JFXButton>
+            <JFXButton fx:id="AddButton" layoutY="130.0" onMouseClicked="#initialize" prefHeight="42.0" prefWidth="84.0" text=" ">
+               <graphic>
+                  <ImageView fitHeight="33.0" fitWidth="30.0" translateX="5.0">
+                     <image>
+                        <Image url="@iconandimage/icons8-add-48.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+            <JFXButton fx:id="SearchButton" layoutY="172.0" onMouseClicked="#initialize" prefHeight="26.0" prefWidth="84.0" text=" ">
+               <graphic>
+                  <ImageView fitHeight="40.0" fitWidth="35.0" translateX="5.0">
+                     <image>
+                        <Image url="@iconandimage/icons8-magnifying-glass-48.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+            <JFXButton fx:id="gameButton" layoutX="1.0" layoutY="216.0" prefHeight="26.0" prefWidth="84.0" text=" ">
+               <graphic>
+                  <ImageView fitHeight="38.0" fitWidth="40.0" translateX="4.0">
+                     <image>
+                        <Image url="@iconandimage/icons8-game-64.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></JFXButton>
+            <JFXButton fx:id="flashCard" layoutX="1.0" layoutY="326.0" prefHeight="32.0" prefWidth="82.0" text=" ">
+               <graphic>
+                  <ImageView fitHeight="38.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" translateX="4.0">
+                     <image>
+                        <Image url="@iconandimage/flash-cards.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <JFXButton fx:id="guessButton" layoutX="5.0" layoutY="379.0" onAction="#initialize" prefHeight="46.0" prefWidth="82.0" text=" ">
+               <graphic>
+                  <FontAwesomeIconView />
+               </graphic></JFXButton>
+            <JFXButton fx:id="reviewVocabButton" layoutX="7.0" layoutY="430.0" prefHeight="32.0" prefWidth="74.0" text=" ">
+               <graphic>
+                  <ImageView fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true" >
+                     <image>
+                        <Image url="@iconandimage/book.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="mainAnchorPane" layoutX="83.0" prefHeight="560.0" prefWidth="741.0" />
+   </children>
+</AnchorPane>
