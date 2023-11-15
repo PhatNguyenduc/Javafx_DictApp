@@ -15,7 +15,7 @@
                 <Image url="@iconandimage/a_game.png" />
             </image>
         </ImageView>
-        <Label fx:id="contentLabel" alignment="CENTER" layoutX="204.0" layoutY="202.0" prefHeight="230.0" prefWidth="342.0" styleClass="guesspanel" text="Label" />
+        <Label fx:id="contentLabel" alignment="CENTER" layoutX="204.0" layoutY="202.0" prefHeight="230.0" prefWidth="342.0" styleClass="guesspanel" stylesheets="@style.css" text="Label" />
         <TextField fx:id="enterTF" layoutX="204.0" layoutY="442.0" prefHeight="38.0" prefWidth="342.0">
             <font>
                 <Font size="20.0" />
@@ -50,7 +50,7 @@
         </AnchorPane>
         <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="506.0" layoutY="443.0">
             <image>
-                <Image url="@iconandimage/icons8-submit-progress-100%20(1).png" />
+                <Image url="@iconandimage/submit.png" />
             </image>
         </ImageView>
         <JFXButton fx:id="guess" layoutX="505.0" layoutY="444.0" prefHeight="40.0" prefWidth="40.0" text=" " />

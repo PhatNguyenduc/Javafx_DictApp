@@ -196,3 +196,16 @@
     fx-border-radius: 10px;
 }
 
+.guesspanel {
+    -fx-background-image: url(iconandimage/test_coloer.png);
+    -fx-font-size: 20px;
+}
+
+.guess {
+    -fx-background-image: url(iconandimage/blue_vector.jpg);
+    -fx-border-color: black;
+}
+
+.custom-alert-button {
+    -fx-translate-x: -20;
+}

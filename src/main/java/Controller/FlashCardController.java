@@ -70,6 +70,7 @@ public class FlashCardController {
         rotate.play();
         rotate.setOnFinished(e -> {
             if (isFront) {
+                selected = cardLabel.getText();
                 cardLabel.setText(dict.getWordMeaning(selected));
             } else {
                 cardLabel.setText(selected);
