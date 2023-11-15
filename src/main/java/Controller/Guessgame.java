@@ -137,10 +137,6 @@ public class Guessgame {
 
 
 
-
-
-
-
     private String shuffleWord(String word) {
         char[] characters = word.toCharArray();
         for (int i = 0; i < characters.length; i++) {

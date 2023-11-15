@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="mainAnchorPane" prefHeight="560.0" prefWidth="750.0" style="-fx-background-color: #7fffd4; -fx-border-color: black; -fx-border-radius: 4;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ReviewVocab">
+   <children>
+      <Label fx:id="meaningLabel" alignment="CENTER" prefHeight="230.0" prefWidth="750.0" text="Label">
+         <font>
+            <Font name="Arial" size="14.0" />
+         </font></Label>
+      <Label fx:id="answerLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="193.0" layoutY="330.0" prefHeight="38.0" prefWidth="355.0">
+         <font>
+            <Font name="Arial" size="14.0" />
+         </font></Label>
+   </children>
+</AnchorPane>

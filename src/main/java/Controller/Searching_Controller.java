@@ -85,7 +85,6 @@ public class Searching_Controller {
         setImageSaveWord = new Image(getClass().getResource("iconandimage/star.png").toString());
         imageSaveWord.setImage(setImageSaveWord);
         listView.setItems(historyList);
-
         searchtext.setOnKeyTyped(keyEvent -> {
             if (searchtext.getText().isEmpty()) {
                 ObservableList<String> List = observableArrayList();
@@ -128,7 +127,7 @@ public class Searching_Controller {
             } else {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Error");
-                alert.setHeaderText("missing a word to change the meaning");
+                alert.setHeaderText("missing a word to change the meaing");
                 alert.setContentText("click in list to choose your word you want to update");
                 alert.getButtonTypes().setAll(ButtonType.OK);
                 alert.showAndWait();
@@ -146,23 +145,14 @@ public class Searching_Controller {
         });
 
         save_word.setOnMouseClicked(event -> {
-            try {
-                if (dict.getDictionary().getNode(getWord).getIsSaved()) {
-                    deleteSavedWord();
-                } else {
-                    insertSavedWord();
-                }
-                setImage();
-            } catch (Exception e) {
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setHeaderText("Missing a valid word.");
-                alert.setContentText("Choose a word to add in your favorite.");
-                alert.getButtonTypes().setAll(ButtonType.OK);
-                alert.showAndWait();
+            if (dict.getDictionary().getNode(getWord).getIsSaved()) {
+                deleteSavedWord();
+            } else {
+                insertSavedWord();
             }
-
+            setImage();
         });
-    }
+}
     private void deleteSavedWord() {
         dict.getDictionary().getNode(getWord).setIsSaved(false);
         savedWords.remove(getWord);
@@ -193,8 +183,8 @@ public class Searching_Controller {
     }
     public void sayword(String word) {
         if(voice != null) {
-            voice.allocate();
-            voice.speak(word);
+        voice.allocate();
+        voice.speak(word);
         }
         else {
             voice.deallocate();

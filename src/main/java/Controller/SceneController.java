@@ -25,6 +25,8 @@ public class SceneController {
 
     @FXML
     private Button flashCard = new Button();
+    @FXML
+    private Button reviewVocabButton = new Button();
     public static DictionaryManagement dict;
     {
         dict = new DictionaryManagement();
@@ -49,6 +51,9 @@ public class SceneController {
         });
         guessButton.setOnMouseClicked(event -> {
             showComponent("Guessgame.fxml");
+        });
+        reviewVocabButton.setOnMouseClicked(event ->{
+           showComponent("ReviewVocab.fxml");
         });
     }
     private void setNode( Node node ) {

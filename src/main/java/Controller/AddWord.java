@@ -43,7 +43,7 @@ public class AddWord {
             addword();
         });
         update.setOnMouseClicked(mouseEvent -> {
-            setUpdate();
+           setUpdate();
         });
     }
     public void addword() {

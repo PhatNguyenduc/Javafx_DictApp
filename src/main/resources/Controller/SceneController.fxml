@@ -61,15 +61,24 @@
                <graphic>
                   <ImageView fitHeight="38.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" translateX="4.0">
                      <image>
-                        <Image url="@iconandimage/searchicon.png" />
+                        <Image url="@iconandimage/flash-cards.png" />
                      </image>
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton fx:id="guessButton" layoutX="1.0" layoutY="379.0" onAction="#initialize" prefHeight="46.0" prefWidth="82.0">
+            <JFXButton fx:id="guessButton" layoutX="5.0" layoutY="379.0" onAction="#initialize" prefHeight="46.0" prefWidth="82.0" text=" ">
                <graphic>
                   <FontAwesomeIconView />
                </graphic></JFXButton>
+            <JFXButton fx:id="reviewVocabButton" layoutX="7.0" layoutY="430.0" prefHeight="32.0" prefWidth="74.0" text=" ">
+               <graphic>
+                  <ImageView fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true" >
+                     <image>
+                        <Image url="@iconandimage/book.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
          </children>
       </AnchorPane>
       <AnchorPane fx:id="mainAnchorPane" layoutX="83.0" prefHeight="560.0" prefWidth="741.0" />

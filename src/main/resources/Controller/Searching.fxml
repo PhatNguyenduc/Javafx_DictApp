@@ -75,9 +75,9 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton fx:id="save_word" layoutX="681.0" layoutY="340.0" prefHeight="39.0" prefWidth="42.0" text=" " onMouseClicked="#initialize" onAction="#initialize" style="-fx-border-color: black;" styleClass="save_word">
+      <JFXButton fx:id="save_word" layoutX="681.0" layoutY="340.0" onAction="#initialize" onMouseClicked="#initialize" prefHeight="39.0" prefWidth="42.0" style="-fx-border-color: black; -fx-border-radius: 10;" styleClass="save_word" text=" ">
          <graphic>
-            <ImageView  fx:id="imageSaveWord" fitHeight="31.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true" translateX="5.0" >
+            <ImageView fx:id="imageSaveWord" fitHeight="31.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true" translateX="5.0">
             </ImageView>
          </graphic>
       </JFXButton>
