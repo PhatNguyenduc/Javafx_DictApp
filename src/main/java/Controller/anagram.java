@@ -1,4 +1,5 @@
 package Controller;
+
 import java.util.Scanner;
 import java.util.Random;
 

@@ -32,6 +32,7 @@ public class SceneController {
         dict = new DictionaryManagement();
         dict.insertWordFromFile("src\\main\\java\\dictionaries.txt");
     }
+
     public void initialize() {
         AddButton.setOnMouseClicked(event ->{
             showComponent("AddWord.fxml");
@@ -56,10 +57,12 @@ public class SceneController {
            showComponent("ReviewVocab.fxml");
         });
     }
+
     private void setNode( Node node ) {
         mainAnchorPane.getChildren().clear();
         mainAnchorPane.getChildren().add((Node) node);
     }
+
     @FXML
     public void showComponent(String path) {
         try {

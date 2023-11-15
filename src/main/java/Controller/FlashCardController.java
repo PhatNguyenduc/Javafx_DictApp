@@ -2,7 +2,6 @@ package Controller;
 
 import javafx.animation.FadeTransition;
 import javafx.animation.RotateTransition;
-import javafx.animation.Transition;
 import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -18,17 +17,15 @@ public class FlashCardController {
     private StackPane flashcardPane = new StackPane();
     @FXML
     private Label cardLabel = new Label();
-    private boolean isFront = true;
-    private String selected = "";
-    private int cur = 1;
-
     @FXML
     private Button leftButton = new Button();
     @FXML
     private Button rightButton = new Button();
     @FXML
     private Label curLabel = new Label();
-
+    private boolean isFront = true;
+    private String selected = "";
+    private int cur = 1;
 
     public void initialize() {
         cardLabel.setStyle("-fx-font-size: 20px;");
@@ -56,6 +53,7 @@ public class FlashCardController {
             }
         });
     }
+
     public void rotatePane() {
         cardLabel.setVisible(false);
         RotateTransition rotateTransition = new RotateTransition(Duration.seconds(0.3), flashcardPane);
@@ -79,12 +77,14 @@ public class FlashCardController {
             isFront = !isFront;
         });
     }
+
     private void fadeTrans() {
         FadeTransition fade = new FadeTransition(Duration.seconds(0.5), flashcardPane);
         fade.setFromValue(0);
         fade.setToValue(1);
         fade.play();
     }
+
     private void left_trans() {
         TranslateTransition translateTransition = new TranslateTransition(Duration.millis(400), flashcardPane);
         translateTransition.setFromX(-flashcardPane.getWidth());
@@ -93,6 +93,7 @@ public class FlashCardController {
         fadeTrans();
         translateTransition.play();
     }
+
     private void right_trans() {
         TranslateTransition translateTransition = new TranslateTransition(Duration.millis(400), flashcardPane);
         translateTransition.setFromX(flashcardPane.getWidth());

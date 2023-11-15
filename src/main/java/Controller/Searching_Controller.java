@@ -11,7 +11,6 @@ import javafx.scene.layout.*;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
-
 import static Controller.SceneController.dict;
 import static javafx.collections.FXCollections.observableArrayList;
 
@@ -22,7 +21,6 @@ public class Searching_Controller {
     public static String getWord = " ";
     @FXML
     private ListView<String> listView = new ListView<String>();
-
     @FXML
     private TextField searchtext = new TextField();
     @FXML
@@ -34,7 +32,6 @@ public class Searching_Controller {
     }
     @FXML
     private AnchorPane head = new AnchorPane();
-
     @FXML
     private Button sound = new Button();
     @FXML
@@ -60,20 +57,24 @@ public class Searching_Controller {
         historyWords = new ArrayList<String>();
         insertWordFromFile(pathHistory, historyWords);
     }
+
     Voice voice = VoiceManager.getInstance().getVoice("kevin16");
     {
         voice.setPitch(120.0f);
         voice.setRate(145);
         voice.setVolume(80);
     }
+
     ObservableList<String> dataList = observableArrayList();
     {
         dataList.addAll(dict.getAllWords());
     }
+
     ObservableList<String> historyList = observableArrayList();
     {
         historyList.addAll(historyWords);
     }
+
     public static List<String> savedWords;
     {
         savedWords = new ArrayList<String>();
@@ -85,6 +86,7 @@ public class Searching_Controller {
         setImageSaveWord = new Image(getClass().getResource("iconandimage/star.png").toString());
         imageSaveWord.setImage(setImageSaveWord);
         listView.setItems(historyList);
+
         searchtext.setOnKeyTyped(keyEvent -> {
             if (searchtext.getText().isEmpty()) {
                 ObservableList<String> List = observableArrayList();
@@ -111,6 +113,7 @@ public class Searching_Controller {
                 }
             }
         });
+
         sound.setOnMouseClicked(event -> {
             if(getWord!=null) {
                 sayword(getWord);
@@ -134,6 +137,7 @@ public class Searching_Controller {
 
             }
         });
+
         updatedialog.setResultConverter(buttonType -> {
             if(buttonType == ButtonType.OK) {
                 String s = updateTF.getText().trim().toLowerCase();
@@ -164,6 +168,7 @@ public class Searching_Controller {
         savedWords.add(0,getWord);
         exportToFile(pathSavedWords, savedWords);
     }
+
     private void setImage() {
         if (dict.getDictionary().getNode(getWord).getIsSaved()) {
             setImageSaveWord = new Image(getClass().getResource("iconandimage/star1.png").toString());
@@ -172,23 +177,28 @@ public class Searching_Controller {
         }
         imageSaveWord.setImage(setImageSaveWord);
     }
+
     private void filterData(String prefix) {
         ObservableList<String> filteredList = observableArrayList();
         List<String> prefixList = dict.getSuggest(prefix);
         filteredList.addAll(prefixList);
         listView.setItems(filteredList);
     }
+
     private String getMeaning(String word) {
         return dict.getWordMeaning(word);
     }
     public void sayword(String word) {
-        if(voice != null) {
-        voice.allocate();
-        voice.speak(word);
-        }
-        else {
-            voice.deallocate();
-        }
+        Thread tmp = new Thread(() ->{
+            if(voice != null) {
+                voice.allocate();
+                voice.speak(word);
+            }
+            else {
+                voice.deallocate();
+            }
+        });
+        tmp.start();
     }
 
     public void deleteword() {
@@ -199,6 +209,7 @@ public class Searching_Controller {
             getWord = null;
         }
     }
+
     @FXML
     private TextArea updateTF = new TextArea();
     ButtonType update_confirm = ButtonType.OK;
@@ -212,6 +223,7 @@ public class Searching_Controller {
         updatedialog.getDialogPane().setPrefSize(400,250);
 
     }
+
     public void exportToFile(String path, List<String> words) {
         try {
             FileWriter fileWriter = new FileWriter(path);
@@ -226,6 +238,7 @@ public class Searching_Controller {
             System.out.println("Something went wrong: " + e);
         }
     }
+
     public void insertWordFromFile(String path, List<String> words) {
         try {
             FileReader fileReader = new FileReader(path);
@@ -242,6 +255,7 @@ public class Searching_Controller {
             System.out.println("Something went wrong: " + e);
         }
     }
+
     private void setIsSavedWords() {
         for (String word : savedWords) {
             if (dict.getDictionary().haveWord(word)) {

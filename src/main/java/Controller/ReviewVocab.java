@@ -4,6 +4,7 @@ import javafx.animation.TranslateTransition;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
@@ -25,6 +26,9 @@ public class ReviewVocab {
     private Label meaningLabel = new Label();
     @FXML
     private Label answerLabel = new Label();
+    @FXML
+    private Label curLabel = new Label();
+    @FXML
     private int index = 0;
     private List<StackPane> stackPaneList = new ArrayList<>();
     private List<Pair<Double, Double>> transitionList = new ArrayList<>();
@@ -47,6 +51,7 @@ public class ReviewVocab {
         transitionList.clear();
         indexList.clear();
         word = savedWords.get(trueAnswer);
+        curLabel.setText(Integer.toString(trueAnswer + 1) + " / " + Integer.toString(savedWords.size()));
         System.out.println(word);
         String shuffle = shuffleString(word);
         size = word.length();
@@ -81,7 +86,7 @@ public class ReviewVocab {
                     slideBack(stackPaneList.get(j), j);
                 }
             }
-            index = (int) (transitionList.get(stackPaneIndex).getKey() + stackPaneList.get(stackPaneIndex).getLayoutX() - 100) / 45;
+            index = (int) (transitionList.get(stackPaneIndex).getKey() + stackPaneList.get(stackPaneIndex).getLayoutX() - 200) / 45;
             System.out.println(index);
             answer = answer.substring(0, index);
             answerLabel.setText(answer);
@@ -107,23 +112,21 @@ public class ReviewVocab {
     }
 
     private StackPane createStackPane(Character labelText, int i) {
-        // Tạo một StackPane
         StackPane stackPane = new StackPane();
-        // Thêm Label vào StackPane
         Label label = new Label(labelText.toString());
         Font customFont = Font.font("Arial", 14);
         label.setFont(customFont);
         stackPane.getChildren().add(label);
-        // Đặt vị trí và kiểu trang trí cho StackPane
         stackPane.setPrefSize(40,40);
-        stackPane.setLayoutX(100 + i * 45);
+        stackPane.setLayoutX(200 + i * 45);
         stackPane.setLayoutY(420);
         stackPane.setStyle("-fx-border-color: black; -fx-background-color: white;");
         return stackPane;
     }
+
     private void slideTo (StackPane stackPane, int i) {
         TranslateTransition transition = new TranslateTransition(new Duration(0.5),stackPane);
-        transition.setToX(100 + 45 * index - stackPane.getLayoutX());
+        transition.setToX(200 + 45 * index - stackPane.getLayoutX());
         transition.setToY(250 - stackPane.getLayoutY());
         transition.play();
         transition.setOnFinished(event -> {
@@ -147,6 +150,7 @@ public class ReviewVocab {
         transition.play();
 
     }
+
     private void check() {
         if (answerLabel.getText().equals(word)) {
             check =  true;
@@ -157,33 +161,31 @@ public class ReviewVocab {
     }
 
     private   String shuffleString(String input) {
-        // Chuyển chuỗi thành mảng kí tự
         char[] charArray = input.toCharArray();
-
-        // Sử dụng seed ngẫu nhiên để có thứ tự ngẫu nhiên đồng nhất
         long seed = System.nanoTime();
         Random random = new Random(seed);
-
-        // Đổi chỗ các kí tự trong mảng
         for (int i = charArray.length - 1; i > 0; i--) {
             int index = random.nextInt(i + 1);
-            // Đổi chỗ
             char temp = charArray[index];
             charArray[index] = charArray[i];
             charArray[i] = temp;
         }
-        // Chuyển mảng kí tự trở lại thành chuỗi
         return new String(charArray);
     }
+
     private void showTrueAnswerAlert() {
-        Alert alert = new Alert(Alert.AlertType.WARNING);
-        alert.initStyle(StageStyle.UTILITY);
-        alert.initModality(Modality.APPLICATION_MODAL);
-        alert.setTitle("Review vocabulary successfully!");
-        alert.setHeaderText("Bạn đã trả lời đúng mọi từ vựng.");
-        alert.setContentText("Chúc mừng! Hãy ôn lại nào");
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("CONGRATULATIONS!");
+        alert.getDialogPane().setPrefSize(200,100);
+        alert.getDialogPane().setHeader(new ImageView(getClass().getResource("iconandimage/True_alert.png").toString()));
+        alert.getDialogPane().getStylesheets().addAll(getClass().getResource("style.css").toExternalForm());
+        alert.getDialogPane().getStyleClass().add("guess");
+        alert.setContentText("   Chúc mừng, bạn đã trả lời đúng!");
         ButtonType closeButton = new ButtonType("Ôn lại", ButtonBar.ButtonData.OK_DONE);
         alert.getButtonTypes().setAll(closeButton);
+        alert.getDialogPane().getButtonTypes().forEach(buttonType -> {
+            alert.getDialogPane().lookupButton(buttonType).getStyleClass().add("custom-alert-button");
+        });
         alert.showAndWait();
     }
 }

@@ -13,6 +13,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -123,6 +124,7 @@ public class GameController {
         fake8.setVisible(false);
         fake9.setVisible(false);
     }
+
     private void setVisibleCheck() {
         fake1.setVisible(checkFake1);
         fake2.setVisible(checkFake2);
@@ -136,6 +138,7 @@ public class GameController {
         cfAnswer.setVisible(true);
         answerTextField.setVisible(true);
     }
+
     private void setUpInitialize() {
         questionPane.setVisible(false);
         hintPane.setVisible(false);
@@ -154,12 +157,14 @@ public class GameController {
         answerTextField.clear();
         setupImage();
     }
+
     private int randomQuestion () {
         Random random = new Random();
         // Tạo số ngẫu nhiên từ 0 đến 99
         int randomNumber = random.nextInt(100);
         return randomNumber % questionList.size();
     }
+
     private void setupImage() {
         if (image == 1) {
             image1 = new Image(getClass().getResource("iconandimage/1.1.png").toString());
@@ -233,6 +238,7 @@ public class GameController {
             key = "pinwheel";
         }
     }
+
     private void setupHint(int i) {
         trueQuestion++;
         if (trueQuestion <= hint.size()) {
@@ -436,6 +442,7 @@ public class GameController {
         }
         return questions;
     }
+
     public void setQuestionList (int i) {
         labelQuestion.setText(questionList.get(i).get(0));
         labelA.setText(questionList.get(i).get(1));
@@ -450,30 +457,38 @@ public class GameController {
         int randomNumber = random.nextInt(5) + 1;
         return randomNumber;
     }
+
     private void showWrongAnswerAlert() {
-        Alert alert = new Alert(Alert.AlertType.WARNING);
-        alert.initStyle(StageStyle.UTILITY);
-        alert.initModality(Modality.APPLICATION_MODAL);
-        alert.setTitle("Câu trả lời sai");
-        alert.setHeaderText("Bạn đã chọn sai đáp án.");
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("WRONG");
+        alert.getDialogPane().setPrefSize(200,100);
+        alert.getDialogPane().setHeader(new ImageView(getClass().getResource("iconandimage/false_alert.png").toString()));
+        alert.getDialogPane().getStylesheets().addAll(getClass().getResource("style.css").toExternalForm());
+        alert.getDialogPane().getStyleClass().add("guess");
         alert.setContentText("Hãy thử lại hoặc xem đáp án đúng.");
-        ButtonType closeButton = new ButtonType("Đóng", ButtonBar.ButtonData.OK_DONE);
-        alert.getButtonTypes().setAll(closeButton);
+        alert.getDialogPane().getButtonTypes().forEach(buttonType -> {
+            alert.getDialogPane().lookupButton(buttonType).getStyleClass().add("custom-alert-button");
+        });
         alert.showAndWait();
         playAgain.setVisible(true);
     }
 
     private void showTrueAnswerAlert() {
-        Alert alert = new Alert(Alert.AlertType.WARNING);
-        alert.initStyle(StageStyle.UTILITY);
-        alert.initModality(Modality.APPLICATION_MODAL);
-        alert.setTitle("Câu trả lời đúng");
-        alert.setHeaderText("Bạn đã chọn đúng đáp án.");
-        alert.setContentText("Chúc mừng! Hãy chơi thêm ván mới nào");
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("CONGRATULATIONS!");
+        alert.getDialogPane().setPrefSize(200,100);
+        alert.getDialogPane().setHeader(new ImageView(getClass().getResource("iconandimage/True_alert.png").toString()));
+        alert.getDialogPane().getStylesheets().addAll(getClass().getResource("style.css").toExternalForm());
+        alert.getDialogPane().getStyleClass().add("guess");
+        alert.setContentText("   Chúc mừng, bạn đã trả lời đúng!");
         ButtonType closeButton = new ButtonType("Chơi lại", ButtonBar.ButtonData.OK_DONE);
         alert.getButtonTypes().setAll(closeButton);
+        alert.getDialogPane().getButtonTypes().forEach(buttonType -> {
+            alert.getDialogPane().lookupButton(buttonType).getStyleClass().add("custom-alert-button");
+        });
         alert.showAndWait();
     }
+
     private int showPlayAgainAlert() {
         AtomicInteger i = new AtomicInteger();
         Alert alert = new Alert(Alert.AlertType.WARNING);

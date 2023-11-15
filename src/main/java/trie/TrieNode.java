@@ -8,6 +8,7 @@ public class TrieNode {
     private boolean isSaved;
     protected String meaning;
     protected Map<Character, TrieNode> children;
+
     public TrieNode() {
         isEndOfWord = false;
         children = new HashMap<>();
@@ -30,5 +31,4 @@ public class TrieNode {
     public void setIsSaved(boolean isSaved) {
         this.isSaved = isSaved;
     }
-
 }

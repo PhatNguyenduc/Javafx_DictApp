@@ -1,12 +1,10 @@
 package Controller;
 
-
+import javafx.application.Platform;
+import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -14,136 +12,67 @@ import java.net.*;
 import java.nio.charset.StandardCharsets;
 
 public class APIgoogletranslate {
-
     @FXML
-    private AnchorPane api = new AnchorPane();
+    private TextArea src_text = new TextArea();
     @FXML
-    private TextArea engtext = new TextArea();
-    @FXML
-    private TextArea vitext = new TextArea();
-    @FXML
-    private Button trans = new Button();
-
-//    @FXML
-//    private ImageView  Vn_flag_1 = new ImageView();
-//    @FXML
-//    private ImageView  Eng_flag_1 = new ImageView();
-//    @FXML
-//    private ImageView  Vn_flag_2 = new ImageView();
-//    @FXML
-//    private ImageView  Eng_flag_2 = new ImageView();
-
+    private TextArea trans_text = new TextArea();
     @FXML
     AnchorPane Eng_Flag = new AnchorPane();
     @FXML
     AnchorPane Vn_flag = new AnchorPane();
-
-
     @FXML
     private Button switch_flag_and_trans = new Button();
-    //uk 93/147
-    //vn 322/147
-
-
-
-
     boolean check_switch = false;
+    private String src = "en";
+    private String tran = "vi";
 
-    private void Eng_to_Vi() throws IOException, URISyntaxException {
-            String s = engtext.getText();
-            String res = translateE_V(s);
-            vitext.setText(res);
-
-    }
-
-    private void Vi_to_Eng() throws IOException, URISyntaxException {
-        String s = engtext.getText();
-        String res = translateV_E(s);
-        vitext.setText(res);
-
-    }
     @FXML
     private void initialize() {
-        if(check_switch == false) {
-        switch_flag_and_trans.setOnMouseClicked(event ->{
-            Eng_Flag.setLayoutX(322);
-            Eng_Flag.setLayoutY(147);
-            Vn_flag.setLayoutX(93);
-            Vn_flag.setLayoutY(147);
-
-            check_switch = true;
-
-        });
-
-            trans.setOnMouseClicked(event -> {
-                try {
-                    Eng_to_Vi();
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                } catch (URISyntaxException e) {
-                    throw new RuntimeException(e);
-                }
-            });
-
-//            engtext.setTextFormatter(new TextFormatter<String>((TextFormatter.Change change) -> {
-//                if(!engtext.getText().isEmpty()) {
-//                    try {
-//                    Eng_to_Vi();
-//                } catch (IOException e) {
-//                    throw new RuntimeException(e);
-//                } catch (URISyntaxException e) {
-//                    throw new RuntimeException(e);
-//                }
-//                }
-//                return change;
-//            }));
-        }
-        if(check_switch == true) {
-            switch_flag_and_trans.setOnMouseClicked(event ->{
+        setUpInitialize();
+        switch_flag_and_trans.setOnMouseClicked(event -> {
+            if (check_switch) {
                 Eng_Flag.setLayoutX(93);
                 Eng_Flag.setLayoutY(147);
                 Vn_flag.setLayoutX(322);
                 Vn_flag.setLayoutY(147);
-
-
                 check_switch = false;
+            } else {
+                Eng_Flag.setLayoutX(322);
+                Eng_Flag.setLayoutY(147);
+                Vn_flag.setLayoutX(93);
+                Vn_flag.setLayoutY(147);
+                check_switch = true;
+            }
+            setUpInitialize();
+        });
+    }
 
-            });
-
-
-
-            trans.setOnMouseClicked(event -> {
-                try {
-                    Vi_to_Eng();
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                } catch (URISyntaxException e) {
-                    throw new RuntimeException(e);
-                }
-            });
-
-//            engtext.focusedProperty().addListener((obs, oldValue, newValue) -> {
-//                if(newValue) {
-//                    try {
-//                        Eng_to_Vi();
-//                    } catch (IOException e) {
-//                        throw new RuntimeException(e);
-//                    } catch (URISyntaxException e) {
-//                        throw new RuntimeException(e);
-//                    }
-//                }
-//            });
-
+    private void setUpInitialize() {
+        if (check_switch) {
+            src = "vi";
+            tran = "en";
+        } else {
+          src = "en";
+          tran = "vi";
         }
-
-    }
-
-    public static String translateE_V(String text) throws IOException, URISyntaxException {
-        return APItranslate("en", "vi", text);
-    }
-
-    public static String translateV_E(String text) throws IOException, URISyntaxException {
-        return APItranslate("vi", "en", text);
+        src_text.setOnKeyTyped(keyEvent -> {
+            String text = src_text.getText().trim();
+            Task<String> task = new Task<String>() {
+                @Override
+                protected String call() throws Exception {
+                    String res = APItranslate(src, tran, text);
+                    res = outputTextFormatted(res);
+                    return res;
+                }
+            };
+            task.setOnSucceeded(e -> {
+                Platform.runLater(() -> {
+                    String result = task.getValue();
+                    Platform.runLater(() -> trans_text.setText(result));
+                });
+            });
+            new Thread(task).start();
+        });
     }
 
     private static String APItranslate(String langFrom, String langTo, String text) throws IOException, URISyntaxException {
@@ -167,5 +96,16 @@ public class APIgoogletranslate {
         return respond_status_.toString();
     }
 
-
+    public String outputTextFormatted(String text) {
+        StringBuilder result = new StringBuilder();
+        for (char c : text.toCharArray()) {
+            if (Character.isLetter(c) || c == ',' || c == ' ' ) {
+                result.append(c);
+            }
+        }
+        String[] ans = result.toString().split(",");
+        return ans[0];
+    }
 }
+
+

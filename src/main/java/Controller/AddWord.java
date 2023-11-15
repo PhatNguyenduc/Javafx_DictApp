@@ -18,18 +18,14 @@ public class AddWord {
     private Label meaningLabel1 = new Label();
     @FXML
     private TextArea word = new TextArea();
-
     @FXML
     private TextArea meaning = new TextArea();
-
     @FXML
     private Button confirm = new Button();
     @FXML
     private Label loglabel = new Label();
-
     @FXML
     private Label logstatus = new Label();
-
     @FXML
     private Button update = new Button();
 
@@ -46,6 +42,7 @@ public class AddWord {
            setUpdate();
         });
     }
+
     public void addword() {
         String newWord = word.getText().toString().toLowerCase().trim();
         String newMeaning = meaning.getText().toString().toLowerCase().trim();
@@ -62,6 +59,7 @@ public class AddWord {
         }
 
     }
+
     public void setUpdate() {
         String w = update_word.getText().toString().toLowerCase().trim();
         String m = update_meaning.getText().toString().toLowerCase().trim();
