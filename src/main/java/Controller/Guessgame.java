@@ -40,34 +40,33 @@ public class Guessgame {
     private int i = 0;
 
     public void initialize() {
+
         contentLabel.setText(qList.get(0));
         scoreLabel.setText(Integer.toString(score));
         levelLabel.setText(Integer.toString(i + 1));
         guess.setOnMouseClicked(event ->{
             String check = enterTF.getText().toLowerCase().trim();
-            String ans = getall.get(i).toLowerCase().trim();
+            String ans = aList.get(i).toLowerCase().trim();
             System.out.println(check);
             System.out.println(ans);
-            if(ans.equals(check)) {
+
+            if(ans.equals(check) && i <= 10) {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("CORRECT");
-//                alert.setHeaderText(null);
-                alert.getDialogPane().setPrefSize(200,200);
-                alert.getDialogPane().setHeader(new ImageView(getClass().getResource("iconandimage/wrong_alert.jpg").toString()));
-                //alert.getDialogPane().setGraphic(new ImageView(getClass().getResource("iconandimage/wrong_alert.jpg").toString()));
+
+                alert.getDialogPane().setPrefSize(200,100);
+                alert.getDialogPane().setHeader(new ImageView(getClass().getResource("iconandimage/True_alert.png").toString()));
+                //alert.getDialogPane().setGraphic(new ImageView(getClass().getResource("iconandimage/").toString()));
                 alert.getDialogPane().getStylesheets().addAll(getClass().getResource("style.css").toExternalForm());
                 alert.getDialogPane().getStyleClass().add("guess");
-                alert.getDialogPane().setContent(new ImageView(getClass().getResource("iconandimage/wrong_alert.jpg").toString()));
-               // alert.setContentText(null);\
-                Image image = new Image(getClass().getResource("iconandimage/left_arrow.png").toString());
-                alert.getDialogPane().setCursor(new ImageCursor(image));
-                //alert.getDialogPane().autosize();
-                //alert.getButtonTypes().setAll(ButtonType.OK);
+                alert.setContentText("              You earn 10points");
+
+
                 alert.getDialogPane().getButtonTypes().forEach(buttonType -> {
                     alert.getDialogPane().lookupButton(buttonType).getStyleClass().add("custom-alert-button");
                 });
                 alert.showAndWait();
-                if(i < qList.size() - 1) {
+                if(i < 10 ) {
                     i += 1;
                     levelLabel.setText(Integer.toString(i+ 1));
                     score += 10;
@@ -75,13 +74,56 @@ public class Guessgame {
                     contentLabel.setText(qList.get(i));
                 }
 
-            } else {
+
+
+            } else if(!ans.equals(check) && i <= 10) {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("INCORRECT");
-                alert.setHeaderText("Try again");
-                alert.setContentText("the right answer is : " + ans);
-                alert.getButtonTypes().setAll(ButtonType.OK);
+
+                alert.getDialogPane().setPrefSize(200,100);
+                alert.getDialogPane().setHeader(new ImageView(getClass().getResource("iconandimage/false_alert.png").toString()));
+                //alert.getDialogPane().setGraphic(new ImageView(getClass().getResource("iconandimage/").toString()));
+                alert.getDialogPane().getStylesheets().addAll(getClass().getResource("style.css").toExternalForm());
+                alert.getDialogPane().getStyleClass().add("guess");
+                alert.setContentText("           The right answer is : " + ans);
+
+
+                alert.getDialogPane().getButtonTypes().forEach(buttonType -> {
+                    alert.getDialogPane().lookupButton(buttonType).getStyleClass().add("custom-alert-button");
+                });
                 alert.showAndWait();
+                if(i < qList.size()) {
+                    i += 1;
+                    levelLabel.setText(Integer.toString(i+ 1));
+                    contentLabel.setText(qList.get(i));
+                }
+
+
+            }
+            if(i >= 10 ) {
+                Alert win = new Alert(Alert.AlertType.INFORMATION);
+                win.setTitle("END");
+
+                win.getDialogPane().setPrefSize(200,100);
+                win.getDialogPane().setHeader(new ImageView(getClass().getResource("iconandimage/end.jpg").toString()));
+                //alert.getDialogPane().setGraphic(new ImageView(getClass().getResource("iconandimage/").toString()));
+                win.getDialogPane().getStylesheets().addAll(getClass().getResource("style.css").toExternalForm());
+                win.getDialogPane().getStyleClass().add("guess");
+                Button buttonOK = (Button) win.getDialogPane().lookupButton(ButtonType.OK);
+                buttonOK.setText("Try again");
+                win.setContentText("           Your score is : " + scoreLabel.getText());
+
+
+                win.getDialogPane().getButtonTypes().forEach(buttonType -> {
+                    win.getDialogPane().lookupButton(buttonType).getStyleClass().add("custom-alert-button");
+                });
+                i = 0;
+                score = 0;
+                scoreLabel.setText(Integer.toString(score));
+                levelLabel.setText(Integer.toString(i));
+                win.showAndWait();
+
+
             }
             enterTF.clear();
         });
@@ -123,9 +165,7 @@ public class Guessgame {
 
             String line;
             while ((line = buf.readLine()) != null) {
-                String[] lines = line.split(" ");
-
-                res.add(lines[1]);
+                res.add(line);
 
             }
             // close file
@@ -140,24 +180,30 @@ public class Guessgame {
 
 
     ObservableList<String> qList = observableArrayList();
-    {
-        qList.addAll(get_question("src/main/java/all.txt"));
-    }
+    ObservableList<String> aList = observableArrayList();
     ObservableList<String> getall = observableArrayList();
     {
         getall.addAll(get_ans("src/main/java/all.txt"));
+        shuffle(getall);
+        int x = 0;
+        while(x < getall.size()) {
+            String[] lines = getall.get(x).split(" ");
+            qList.add(lines[0]);
+            aList.add(lines[1]);
+            x++;
+        }
     }
 
 
 
-    private String shuffleWord(String word) {
-        char[] characters = word.toCharArray();
-        for (int i = 0; i < characters.length; i++) {
-            int randomIndex = (int) (Math.random() * characters.length);
-            char temp = characters[i];
-            characters[i] = characters[randomIndex];
-            characters[randomIndex] = temp;
+
+
+    public static void shuffle(List<String> list) {
+        for (int i = 0; i < list.size(); i++) {
+            int j = (int) (Math.random() * list.size());
+            String temp = list.get(i);
+            list.set(i, list.get(j));
+            list.set(j, temp);
         }
-        return new String(characters);
     }
 }

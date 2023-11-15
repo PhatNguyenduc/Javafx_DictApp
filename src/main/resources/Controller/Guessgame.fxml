@@ -22,7 +22,7 @@
             </font></TextField>
         <AnchorPane layoutX="204.0" layoutY="140.0" prefHeight="46.0" prefWidth="98.0" style="-fx-border-color: black; -fx-border-radius: 10;">
             <children>
-                <Label alignment="CENTER" prefHeight="46.0" prefWidth="61.0" text="Level">
+                <Label alignment="CENTER" prefHeight="46.0" prefWidth="61.0" text="Stage">
                     <font>
                         <Font name="Arial" size="20.0" />
                     </font>
