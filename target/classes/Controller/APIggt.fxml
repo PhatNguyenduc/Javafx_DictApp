@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="api" prefHeight="560.0" prefWidth="750.0" style="-fx-border-color: black; -fx-border-width: 2;" styleClass="api" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.APIgoogletranslate">
+   <children>
+      <TextArea fx:id="engtext" layoutX="93.0" layoutY="213.0" prefHeight="134.0" prefWidth="564.0" promptText="Input......" styleClass="engtext">
+         <cursor>
+            <Cursor fx:constant="TEXT" />
+         </cursor></TextArea>
+      <TextArea fx:id="vitext" editable="false" layoutX="93.0" layoutY="367.0" prefHeight="134.0" prefWidth="564.0" promptText="Result........" styleClass="vitext">
+         <cursor>
+            <Cursor fx:constant="TEXT" />
+         </cursor></TextArea>
+      <JFXButton fx:id="trans" layoutX="556.0" layoutY="149.0" onAction="#initialize" prefHeight="42.0" prefWidth="100.0" style="-fx-alignment: center;" styleClass="trans" text="Translate">
+         <font>
+            <Font name=".VnArial" size="12.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></JFXButton>
+      <JFXButton fx:id="switch_flag_and_trans" layoutX="234.0" layoutY="147.0" onAction="#initialize" prefHeight="40.0" prefWidth="58.0" scaleX="-1.0" scaleY="-1.0" scaleZ="-2.0" style="-fx-border-color: black;" text=" ">
+         <graphic>
+            <FontAwesomeIconView glyphName="EXCHANGE" size="25" text="" translateX="4.0" translateY="-2.0" wrappingWidth="25.0" />
+         </graphic>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <AnchorPane fx:id="Eng_Flag" layoutX="93.0" layoutY="147.0" prefHeight="38.0" prefWidth="106.0" style="-fx-border-color: gray;">
+         <children>
+            <ImageView fitHeight="38.0" fitWidth="50.0" translateY="1.0">
+               <image>
+                  <Image url="@iconandimage/UK_flag.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="64.0" layoutY="12.0" text="ENG">
+               <font>
+                  <Font name="Arial Black" size="12.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="Vn_flag" layoutX="322.0" layoutY="147.0" prefHeight="38.0" prefWidth="106.0" style="-fx-border-color: gray;">
+         <children>
+            <ImageView fitHeight="40.0" fitWidth="50.0" translateY="1.0">
+               <image>
+                  <Image url="@iconandimage/VN_flag.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="64.0" layoutY="13.0" text="VI" translateX="6.0">
+               <font>
+                  <Font name="Arial Black" size="12.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <ImageView fitHeight="100.0" fitWidth="106.0" layoutX="14.0" layoutY="12.0">
+         <image>
+            <Image url="@iconandimage/icons8-google-translate-100.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="195.0" fitWidth="319.0" layoutX="216.0" layoutY="-36.0">
+         <image>
+            <Image url="@iconandimage/Translate_title.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

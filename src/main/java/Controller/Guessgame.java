@@ -2,7 +2,9 @@ package Controller;
 
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.ImageCursor;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
@@ -49,15 +51,26 @@ public class Guessgame {
             if(ans.equals(check)) {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("CORRECT");
-                alert.setHeaderText(" ");
-                alert.setGraphic(new ImageView(getClass().getResource("iconandimage/kitty.png").toString()));
-                alert.setContentText("try the next level");
-                alert.getButtonTypes().setAll(ButtonType.OK);
+//                alert.setHeaderText(null);
+                alert.getDialogPane().setPrefSize(200,200);
+                alert.getDialogPane().setHeader(new ImageView(getClass().getResource("iconandimage/wrong_alert.jpg").toString()));
+                //alert.getDialogPane().setGraphic(new ImageView(getClass().getResource("iconandimage/wrong_alert.jpg").toString()));
+                alert.getDialogPane().getStylesheets().addAll(getClass().getResource("style.css").toExternalForm());
+                alert.getDialogPane().getStyleClass().add("guess");
+                alert.getDialogPane().setContent(new ImageView(getClass().getResource("iconandimage/wrong_alert.jpg").toString()));
+               // alert.setContentText(null);\
+                Image image = new Image(getClass().getResource("iconandimage/left_arrow.png").toString());
+                alert.getDialogPane().setCursor(new ImageCursor(image));
+                //alert.getDialogPane().autosize();
+                //alert.getButtonTypes().setAll(ButtonType.OK);
+                alert.getDialogPane().getButtonTypes().forEach(buttonType -> {
+                    alert.getDialogPane().lookupButton(buttonType).getStyleClass().add("custom-alert-button");
+                });
                 alert.showAndWait();
                 if(i < qList.size() - 1) {
-                    i++;
-                    levelLabel.setText(Integer.toString(i));
-                    score+=10;
+                    i += 1;
+                    levelLabel.setText(Integer.toString(i+ 1));
+                    score += 10;
                     scoreLabel.setText(Integer.toString(score));
                     contentLabel.setText(qList.get(i));
                 }
