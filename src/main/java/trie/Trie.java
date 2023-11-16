@@ -3,7 +3,6 @@ package trie;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.Timer;
 
 public class Trie {
     private TrieNode root;
@@ -24,7 +23,6 @@ public class Trie {
             }
             node = node.children.get(c);
         }
-
             // mark this node as a complete word
         node.isEndOfWord = true;
         node.meaning = meaning;
@@ -69,6 +67,7 @@ public class Trie {
             cur = cur.substring(0, cur.length() - 1);
         }
     }
+
     public List<String> allWords() {
         List<String> res = new ArrayList<>();
         dfs(root,"", res);

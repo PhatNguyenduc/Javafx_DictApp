@@ -1,7 +1,6 @@
 package Dictionary_commandline;
 
 import trie.*;
-
 import java.io.*;
 import java.util.List;
 
@@ -90,6 +89,7 @@ public class DictionaryManagement {
             System.out.println(s);
         }
     }
+
     public List<String> getSuggest(String word) {
         return dictionary.suggestWord(word);
     }
@@ -97,6 +97,7 @@ public class DictionaryManagement {
     public List<String> getAllWords() {
         return dictionary.allWords();
     }
+
     public String getWordMeaning(String word) {
         TrieNode node = dictionary.getNode(word);
         if (node != null) {
@@ -104,10 +105,10 @@ public class DictionaryManagement {
         }
         return "Word not found";
     }
+
     public void playGame() {
-        System.out.println("Nothin here...wait to next update...");
+        System.out.println("Nothing here...wait to next update...");
     }
 }
-
 
 

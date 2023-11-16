@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="guessPanel" prefHeight="560.0" prefWidth="750.0" styleClass="guess" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Guessgame">
+    <children>
+        <ImageView fitHeight="300.0" fitWidth="300.0" layoutX="225.0" layoutY="-75.0">
+            <image>
+                <Image url="@iconandimage/a_game.png" />
+            </image>
+        </ImageView>
+        <Label fx:id="contentLabel" alignment="CENTER" layoutX="204.0" layoutY="202.0" prefHeight="230.0" prefWidth="342.0" styleClass="guesspanel" stylesheets="@style.css" text="Label" textAlignment="CENTER" wrapText="true" />
+        <TextField fx:id="enterTF" layoutX="204.0" layoutY="442.0" prefHeight="38.0" prefWidth="342.0">
+            <font>
+                <Font size="20.0" />
+            </font></TextField>
+        <AnchorPane layoutX="204.0" layoutY="140.0" prefHeight="46.0" prefWidth="98.0" style="-fx-border-color: black; -fx-border-radius: 10;">
+            <children>
+                <Label alignment="CENTER" prefHeight="46.0" prefWidth="61.0" text="Stage">
+                    <font>
+                        <Font name="Arial" size="20.0" />
+                    </font>
+                </Label>
+                <Label fx:id="levelLabel" alignment="CENTER" layoutX="62.0" prefHeight="46.0" prefWidth="62.0" text="Label">
+                    <font>
+                        <Font size="20.0" />
+                    </font>
+                </Label>
+            </children>
+        </AnchorPane>
+        <AnchorPane layoutX="421.0" layoutY="140.0" prefHeight="46.0" prefWidth="69.0" style="-fx-border-color: black; -fx-border-radius: 10;">
+            <children>
+                <Label alignment="CENTER" prefHeight="46.0" prefWidth="62.0" text="Score">
+                    <font>
+                        <Font size="20.0" />
+                    </font>
+                </Label>
+                <Label fx:id="scoreLabel" alignment="CENTER" layoutX="62.0" prefHeight="46.0" prefWidth="62.0" text="Label">
+                    <font>
+                        <Font size="20.0" />
+                    </font>
+                </Label>
+            </children>
+        </AnchorPane>
+        <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="506.0" layoutY="443.0">
+            <image>
+                <Image url="@iconandimage/submit.png" />
+            </image>
+        </ImageView>
+        <JFXButton fx:id="guess" layoutX="505.0" layoutY="444.0" prefHeight="40.0" prefWidth="40.0" text=" " />
+    </children>
+</AnchorPane>

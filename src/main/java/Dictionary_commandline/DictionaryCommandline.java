@@ -5,11 +5,11 @@ import java.util.Scanner;
 public class DictionaryCommandline {
     private DictionaryManagement dictionaryManagement;
     private Scanner scanner;
-
     public DictionaryCommandline() {
         dictionaryManagement = new DictionaryManagement();
         scanner = new Scanner(System.in);
     }
+
     public DictionaryCommandline(DictionaryManagement dictionaryManagement) {
         this.dictionaryManagement = dictionaryManagement;
     }
@@ -104,8 +104,6 @@ public class DictionaryCommandline {
                 }
             }
         }
-
-
     }
 
 

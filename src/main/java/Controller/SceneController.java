@@ -4,10 +4,8 @@ import Dictionary_commandline.DictionaryManagement;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
-
 import java.io.IOException;
 
 public class SceneController {
@@ -22,17 +20,21 @@ public class SceneController {
 
     @FXML
     private AnchorPane mainAnchorPane = new AnchorPane();
+    @FXML
+    private Button guessButton = new Button();
 
     @FXML
     private Button flashCard = new Button();
+    @FXML
+    private Button reviewVocabButton = new Button();
     public static DictionaryManagement dict;
     {
         dict = new DictionaryManagement();
         dict.insertWordFromFile("src\\main\\java\\dictionaries.txt");
     }
 
-    public  AnchorPane getAnchorPane() {return mainAnchorPane;}
     public void initialize() {
+        System.gc();
         AddButton.setOnMouseClicked(event ->{
             showComponent("AddWord.fxml");
         });
@@ -49,12 +51,19 @@ public class SceneController {
         gameButton.setOnMouseClicked(event -> {
             showComponent("Game.fxml");
         });
+        guessButton.setOnMouseClicked(event -> {
+            showComponent("Guessgame.fxml");
+        });
+        reviewVocabButton.setOnMouseClicked(event ->{
+           showComponent("ReviewVocab.fxml");
+        });
     }
 
     private void setNode( Node node ) {
         mainAnchorPane.getChildren().clear();
         mainAnchorPane.getChildren().add((Node) node);
     }
+
     @FXML
     public void showComponent(String path) {
         try {
@@ -64,5 +73,4 @@ public class SceneController {
             e.printStackTrace();
         }
     }
-
 }

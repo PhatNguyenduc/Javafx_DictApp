@@ -13,7 +13,9 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.Random;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class GameController {
     @FXML
@@ -84,6 +86,8 @@ public class GameController {
     private Button cfAnswer = new Button();
     @FXML
     private TextField answerTextField = new TextField();
+    @FXML
+    private Button playAgain = new Button();
     private int image = 0;
     private String key = "";
     private String path = "src\\main\\java\\question.txt";
@@ -120,6 +124,7 @@ public class GameController {
         fake8.setVisible(false);
         fake9.setVisible(false);
     }
+
     private void setVisibleCheck() {
         fake1.setVisible(checkFake1);
         fake2.setVisible(checkFake2);
@@ -133,6 +138,7 @@ public class GameController {
         cfAnswer.setVisible(true);
         answerTextField.setVisible(true);
     }
+
     private void setUpInitialize() {
         questionPane.setVisible(false);
         hintPane.setVisible(false);
@@ -146,56 +152,98 @@ public class GameController {
         imageView8.setVisible(false);
         imageView9.setVisible(false);
         hint.clear();
-        trueQuestion = -1;
-        cfAnswer.setVisible(false);
-        answerTextField.setVisible(false);
+        trueQuestion = 0;
+        playAgain.setVisible(true);
+        answerTextField.clear();
         setupImage();
     }
-    private int randomImage () {
-        return 1;
-    }
+
     private int randomQuestion () {
         Random random = new Random();
         // Tạo số ngẫu nhiên từ 0 đến 99
         int randomNumber = random.nextInt(100);
         return randomNumber % questionList.size();
     }
+
     private void setupImage() {
         if (image == 1) {
-            image1 = new Image(getClass().getResource("iconandimage/icons8-game-64.png").toString());
-            image2 = new Image(getClass().getResource("iconandimage/icons8-game-64.png").toString());
-            image3 = new Image(getClass().getResource("iconandimage/icons8-game-64.png").toString());
-            image4 = new Image(getClass().getResource("iconandimage/icons8-game-64.png").toString());
-            image5 = new Image(getClass().getResource("iconandimage/icons8-game-64.png").toString());
-            image6 = new Image(getClass().getResource("iconandimage/icons8-game-64.png").toString());
-            image7 = new Image(getClass().getResource("iconandimage/icons8-game-64.png").toString());
-            image8 = new Image(getClass().getResource("iconandimage/icons8-game-64.png").toString());
-            image9 = new Image(getClass().getResource("iconandimage/icons8-game-64.png").toString());
-            hint.add("1");
-            hint.add("2");
-            hint.add("3");
-            key = "cho";
+            image1 = new Image(getClass().getResource("iconandimage/1.1.png").toString());
+            image2 = new Image(getClass().getResource("iconandimage/1.2.png").toString());
+            image3 = new Image(getClass().getResource("iconandimage/1.3.png").toString());
+            image4 = new Image(getClass().getResource("iconandimage/1.4.png").toString());
+            image5 = new Image(getClass().getResource("iconandimage/1.5.png").toString());
+            image6 = new Image(getClass().getResource("iconandimage/1.6.png").toString());
+            image7 = new Image(getClass().getResource("iconandimage/1.7.png").toString());
+            image8 = new Image(getClass().getResource("iconandimage/1.8.png").toString());
+            image9 = new Image(getClass().getResource("iconandimage/1.9.png").toString());
+            hint.add("Keyword is a noun which contains 7 characters.");
+            hint.add("Keyword contains the name of an animal, which is very friendly to humans and has a very good nose.");
+            hint.add("keyword contains a noun that is the product of a tree.");
+            key = "dogwood";
         } else if (image == 2) {
-            image1 = new Image(getClass().getResource("iconandimage/icons8-google-translate-100.png").toString());
-            image2 = new Image(getClass().getResource("iconandimage/icons8-google-translate-100.png").toString());
-            image3 = new Image(getClass().getResource("iconandimage/icons8-google-translate-100.png").toString());
-            image4 = new Image(getClass().getResource("iconandimage/icons8-google-translate-100.png").toString());
-            image5 = new Image(getClass().getResource("iconandimage/icons8-google-translate-100.png").toString());
-            image6 = new Image(getClass().getResource("iconandimage/icons8-google-translate-100.png").toString());
-            image7 = new Image(getClass().getResource("iconandimage/icons8-google-translate-100.png").toString());
-            image8 = new Image(getClass().getResource("iconandimage/icons8-google-translate-100.png").toString());
-            image9 = new Image(getClass().getResource("iconandimage/icons8-google-translate-100.png").toString());
-            hint.add("a");
-            hint.add("b");
-            hint.add("c");
-            key = "meo";
+            image1 = new Image(getClass().getResource("iconandimage/2.1.png").toString());
+            image2 = new Image(getClass().getResource("iconandimage/2.2.png").toString());
+            image3 = new Image(getClass().getResource("iconandimage/2.3.png").toString());
+            image4 = new Image(getClass().getResource("iconandimage/2.4.png").toString());
+            image5 = new Image(getClass().getResource("iconandimage/2.5.png").toString());
+            image6 = new Image(getClass().getResource("iconandimage/2.6.png").toString());
+            image7 = new Image(getClass().getResource("iconandimage/2.7.png").toString());
+            image8 = new Image(getClass().getResource("iconandimage/2.8.png").toString());
+            image9 = new Image(getClass().getResource("iconandimage/2.9.png").toString());
+            hint.add("The keyword is a seven-letter noun.");
+            hint.add("The keyword contains a noun that refers to something emitting heat and light.");
+            hint.add("The keyword contains a verb that represents a characteristic activity of birds.");
+            key = "firefly";
+        } else if (image == 3) {
+            image1 = new Image(getClass().getResource("iconandimage/3.1.png").toString());
+            image2 = new Image(getClass().getResource("iconandimage/3.2.png").toString());
+            image3 = new Image(getClass().getResource("iconandimage/3.3.png").toString());
+            image4 = new Image(getClass().getResource("iconandimage/3.4.png").toString());
+            image5 = new Image(getClass().getResource("iconandimage/3.5.png").toString());
+            image6 = new Image(getClass().getResource("iconandimage/3.6.png").toString());
+            image7 = new Image(getClass().getResource("iconandimage/3.7.png").toString());
+            image8 = new Image(getClass().getResource("iconandimage/3.8.png").toString());
+            image9 = new Image(getClass().getResource("iconandimage/3.9.png").toString());
+            hint.add("The keyword is a ten-letter noun.");
+            hint.add("The keyword is related to a part of an animal used for chewing.");
+            hint.add("The keyword contains a verb that is invoked when pressing the Ctrl + V key combination.");
+            key = "toothpaste";
+        } else if (image == 4) {
+            image1 = new Image(getClass().getResource("iconandimage/4.1.png").toString());
+            image2 = new Image(getClass().getResource("iconandimage/4.2.png").toString());
+            image3 = new Image(getClass().getResource("iconandimage/4.3.png").toString());
+            image4 = new Image(getClass().getResource("iconandimage/4.4.png").toString());
+            image5 = new Image(getClass().getResource("iconandimage/4.5.png").toString());
+            image6 = new Image(getClass().getResource("iconandimage/4.6.png").toString());
+            image7 = new Image(getClass().getResource("iconandimage/4.7.png").toString());
+            image8 = new Image(getClass().getResource("iconandimage/4.8.png").toString());
+            image9 = new Image(getClass().getResource("iconandimage/4.9.png").toString());
+            hint.add("The keyword is a eight-letter noun.");
+            hint.add("The keyword is a phenomenon that causes the surrounding space to become darker.");
+            hint.add("The keyword is related to a type of energy used by humans in their daily lives.");
+            key = "blackout";
+        } else if (image == 5) {
+            image1 = new Image(getClass().getResource("iconandimage/5.1.png").toString());
+            image2 = new Image(getClass().getResource("iconandimage/5.2.png").toString());
+            image3 = new Image(getClass().getResource("iconandimage/5.3.png").toString());
+            image4 = new Image(getClass().getResource("iconandimage/5.4.png").toString());
+            image5 = new Image(getClass().getResource("iconandimage/5.5.png").toString());
+            image6 = new Image(getClass().getResource("iconandimage/5.6.png").toString());
+            image7 = new Image(getClass().getResource("iconandimage/5.7.png").toString());
+            image8 = new Image(getClass().getResource("iconandimage/5.8.png").toString());
+            image9 = new Image(getClass().getResource("iconandimage/5.9.png").toString());
+            hint.add("The keyword is a eight-letter noun.");
+            hint.add("The keyword contains a noun that refers to a rolling part when various types of vehicles are in motion.");
+            hint.add("The keyword is a noun that refers to a toy that children enjoy, spinning when exposed to the wind.");
+            key = "pinwheel";
         }
     }
+
     private void setupHint(int i) {
         trueQuestion++;
-        if (trueQuestion < hint.size()) {
+        if (trueQuestion <= hint.size()) {
             labelInfoHint.setText("Bạn đã trả lời đúng! Đây là gợi ý của bạn");
-            labelHint.setText(hint.get(trueQuestion));
+            labelHint.setText(hint.get(trueQuestion - 1));
         } else {
             labelInfoHint.setText("Bạn đã hết gợi ý!");
             labelHint.setText("");
@@ -204,6 +252,7 @@ public class GameController {
         buttonHint.setOnAction(event -> {
             hintPane.setVisible(false);
         });
+        playAgain.setVisible(true);
         if (i == 1) {
             checkFake1 = false;
             imageView1.setVisible(true);
@@ -254,6 +303,7 @@ public class GameController {
     private void setActionAnswer(int j) {
         cfAnswer.setVisible(false);
         answerTextField.setVisible(false);
+        playAgain.setVisible(false);
         int i = randomQuestion();
         setQuestionList(i);
         questionPane.setVisible(true);
@@ -297,7 +347,8 @@ public class GameController {
     }
 
     public void initialize() {
-        image = 1;
+        System.gc();
+        image = randomImage();
         setUpInitialize();
         fake1.setOnMouseClicked(event -> {
             setActionAnswer(1);
@@ -327,8 +378,30 @@ public class GameController {
             setActionAnswer(9);
         });
         cfAnswer.setOnMouseClicked(event ->{
-            if (answerTextField.getText().equals(key)) {
+            if (answerTextField.getText().toLowerCase().equals(key)) {
                 showTrueAnswerAlert();
+                checkFake1 = true;
+                checkFake2 = true;
+                checkFake3 = true;
+                checkFake4 = true;
+                checkFake5 = true;
+                checkFake6 = true;
+                checkFake7 = true;
+                checkFake8 = true;
+                checkFake9 = true;
+                setVisibleCheck();
+                if (image != 3) {
+                    image = 6 - image;
+                } else {
+                    image = 4;
+                }
+                setUpInitialize();
+            } else {
+                showWrongAnswerAlert();
+            }
+        });
+        playAgain.setOnMouseClicked(event -> {
+            if (showPlayAgainAlert() == 0) {
                 checkFake1 = true;
                 checkFake2 = true;
                 checkFake3 = true;
@@ -341,8 +414,6 @@ public class GameController {
                 setVisibleCheck();
                 image = 3 - image;
                 setUpInitialize();
-            } else {
-                showWrongAnswerAlert();
             }
         });
     }
@@ -356,7 +427,7 @@ public class GameController {
             int cnt = 0;
             List<String> temp = new ArrayList<String>();
             while ((line = buf.readLine()) != null) {
-                temp.add(line);
+                temp.add(line.trim());
                 cnt++;
                 if (cnt == 6) {
                     cnt = 0;
@@ -372,6 +443,7 @@ public class GameController {
         }
         return questions;
     }
+
     public void setQuestionList (int i) {
         labelQuestion.setText(questionList.get(i).get(0));
         labelA.setText(questionList.get(i).get(1));
@@ -379,27 +451,63 @@ public class GameController {
         labelC.setText(questionList.get(i).get(3));
         labelD.setText(questionList.get(i).get(4));
     }
+
+    private int randomImage() {
+        Random random = new Random();
+        // Sinh số ngẫu nhiên từ 1 đến 5 (bao gồm cả 1 và 5)
+        int randomNumber = random.nextInt(5) + 1;
+        return randomNumber;
+    }
+
     private void showWrongAnswerAlert() {
-        Alert alert = new Alert(Alert.AlertType.WARNING);
-        alert.initStyle(StageStyle.UTILITY);
-        alert.initModality(Modality.APPLICATION_MODAL);
-        alert.setTitle("Câu trả lời sai");
-        alert.setHeaderText("Bạn đã chọn sai đáp án.");
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("WRONG");
+        alert.getDialogPane().setPrefSize(200,100);
+        alert.getDialogPane().setHeader(new ImageView(getClass().getResource("iconandimage/false_alert.png").toString()));
+        alert.getDialogPane().getStylesheets().addAll(getClass().getResource("style.css").toExternalForm());
+        alert.getDialogPane().getStyleClass().add("guess");
         alert.setContentText("Hãy thử lại hoặc xem đáp án đúng.");
-        ButtonType closeButton = new ButtonType("Đóng", ButtonBar.ButtonData.OK_DONE);
-        alert.getButtonTypes().setAll(closeButton);
+        alert.getDialogPane().getButtonTypes().forEach(buttonType -> {
+            alert.getDialogPane().lookupButton(buttonType).getStyleClass().add("custom-alert-button");
+        });
         alert.showAndWait();
+        playAgain.setVisible(true);
     }
 
     private void showTrueAnswerAlert() {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("CONGRATULATIONS!");
+        alert.getDialogPane().setPrefSize(200,100);
+        alert.getDialogPane().setHeader(new ImageView(getClass().getResource("iconandimage/True_alert.png").toString()));
+        alert.getDialogPane().getStylesheets().addAll(getClass().getResource("style.css").toExternalForm());
+        alert.getDialogPane().getStyleClass().add("guess");
+        alert.setContentText("   Chúc mừng, bạn đã trả lời đúng!");
+        ButtonType closeButton = new ButtonType("Chơi lại", ButtonBar.ButtonData.OK_DONE);
+        alert.getButtonTypes().setAll(closeButton);
+        alert.getDialogPane().getButtonTypes().forEach(buttonType -> {
+            alert.getDialogPane().lookupButton(buttonType).getStyleClass().add("custom-alert-button");
+        });
+        alert.showAndWait();
+    }
+
+    private int showPlayAgainAlert() {
+        AtomicInteger i = new AtomicInteger();
         Alert alert = new Alert(Alert.AlertType.WARNING);
         alert.initStyle(StageStyle.UTILITY);
         alert.initModality(Modality.APPLICATION_MODAL);
         alert.setTitle("Câu trả lời đúng");
-        alert.setHeaderText("Bạn đã chọn đúng đáp án.");
+        alert.setHeaderText("Bạn chắc chắn muốn chơi lại?");
         alert.setContentText("Chúc mừng! Hãy chơi thêm ván mới nào");
-        ButtonType closeButton = new ButtonType("Đóng", ButtonBar.ButtonData.OK_DONE);
-        alert.getButtonTypes().setAll(closeButton);
-        alert.showAndWait();
+        ButtonType closeButton = new ButtonType("Chơi lại", ButtonBar.ButtonData.OK_DONE);
+        ButtonType continueButton = new ButtonType("Chơi tiếp", ButtonBar.ButtonData.OK_DONE);
+        alert.getButtonTypes().setAll(closeButton, continueButton);
+        alert.showAndWait().ifPresent(response -> {
+            if (response == closeButton) {
+                i.set(0);
+            } else if (response == continueButton) {
+                i.set(1);
+            }
+        });
+        return i.get();
     }
 }
