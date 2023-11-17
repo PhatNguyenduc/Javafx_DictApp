@@ -2,7 +2,6 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.Cursor?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
@@ -11,7 +10,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#initialize" prefHeight="560.0" prefWidth="750.0" styleClass="anchorPane" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Searching_Controller">
+<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#initialize" prefHeight="560.0" prefWidth="750.0" style="-fx-border-color: black;" styleClass="anchorPane" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Searching_Controller">
    <children>
       <AnchorPane fx:id="head" layoutX="2.0" layoutY="2.0" prefHeight="102.0" prefWidth="744.0" style="-fx-border-color: black; -fx-border-width: 3; -fx-background-color: skyblue; -fx-border-style: solid;" translateX="1.0">
          <children>
@@ -27,7 +26,7 @@
             </ImageView>
          </children>
       </AnchorPane>
-      <TextArea fx:id="meaningArea" editable="false" layoutX="261.0" layoutY="161.0" prefHeight="386.0" prefWidth="411.0" styleClass="meaningArea">
+      <TextArea fx:id="meaningArea" editable="false" layoutX="249.0" layoutY="114.0" prefHeight="433.0" prefWidth="428.0" styleClass="meaningArea">
          <font>
             <Font name="Arial" size="25.0" />
          </font></TextArea>
@@ -36,11 +35,7 @@
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></ListView>
-      <Label fx:id="flag" layoutX="397.0" layoutY="134.0" prefHeight="26.0" prefWidth="139.0" styleClass="flag" text="Definition " textFill="WHITE">
-         <font>
-            <Font name=".VnArial" size="12.0" />
-         </font></Label>
-      <JFXButton fx:id="sound" layoutX="683.0" layoutY="164.0" onAction="#initialize" styleClass="sound" text=" ">
+      <JFXButton fx:id="sound" layoutX="682.0" layoutY="116.0" onAction="#initialize" styleClass="sound" text=" ">
          <graphic>
             <ImageView fx:id="sound_image" fitHeight="28.0" fitWidth="26.0" styleClass="sound_image" translateX="5.5">
                <image>
@@ -57,7 +52,7 @@
             <Image url="@iconandimage/icons8-search-80.png" />
          </image>
       </ImageView>
-      <JFXButton fx:id="update_word" layoutX="681.0" layoutY="219.0" prefHeight="42.0" prefWidth="35.0" styleClass="update_word" text=" ">
+      <JFXButton fx:id="update_word" layoutX="680.0" layoutY="171.0" prefHeight="42.0" prefWidth="35.0" styleClass="update_word" text=" ">
          <graphic>
             <ImageView fitHeight="32.0" fitWidth="29.0" translateX="5.0">
                <image>
@@ -66,7 +61,7 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton fx:id="delete_word" layoutX="681.0" layoutY="280.0" onAction="#deleteword" prefHeight="39.0" prefWidth="42.0" style="-fx-border-color: black;" styleClass="delete_word" text=" ">
+      <JFXButton fx:id="delete_word" layoutX="680.0" layoutY="232.0" onAction="#deleteword" prefHeight="39.0" prefWidth="42.0" style="-fx-border-color: black;" styleClass="delete_word" text=" ">
          <graphic>
             <ImageView fitHeight="31.0" fitWidth="28.0" translateX="5.0">
                <image>
@@ -75,11 +70,19 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton fx:id="save_word" layoutX="681.0" layoutY="340.0" onAction="#initialize" onMouseClicked="#initialize" prefHeight="39.0" prefWidth="42.0" style="-fx-border-color: black; -fx-border-radius: 10;" styleClass="save_word" text=" ">
+      <JFXButton fx:id="save_word" layoutX="680.0" layoutY="292.0" onAction="#initialize" onMouseClicked="#initialize" prefHeight="39.0" prefWidth="42.0" style="-fx-border-color: black; -fx-border-radius: 10;" styleClass="save_word" text=" ">
          <graphic>
             <ImageView fx:id="imageSaveWord" fitHeight="31.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true" translateX="5.0">
             </ImageView>
          </graphic>
       </JFXButton>
+      <JFXButton fx:id="web_cambridge" layoutX="680.0" layoutY="350.0" onAction="#initialize" prefHeight="38.0" prefWidth="54.0" style="-fx-border-color: black; -fx-border-radius: 10;" text=" ">
+         <graphic>
+            <ImageView fitHeight="30.0" fitWidth="30.0" translateX="5.0">
+               <image>
+                  <Image url="@iconandimage/www.png" />
+               </image>
+            </ImageView>
+         </graphic></JFXButton>
    </children>
 </AnchorPane>

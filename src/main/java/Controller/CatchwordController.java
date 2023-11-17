@@ -13,11 +13,10 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicInteger;
 
-public class GameController {
+public class CatchwordController {
     @FXML
     private ImageView imageView1 = new ImageView();
     @FXML
@@ -416,6 +415,8 @@ public class GameController {
                 setUpInitialize();
             }
         });
+
+
     }
 
     private List<List<String>> questions (String path) {

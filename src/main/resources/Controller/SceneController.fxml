@@ -10,7 +10,7 @@
    <children>
       <AnchorPane prefHeight="560.0" prefWidth="70.0" style="-fx-background-color: lightblue;">
          <children>
-            <JFXButton fx:id="APIButton" layoutX="2.0" layoutY="250.0" prefHeight="32.0" prefWidth="74.0" text=" ">
+            <JFXButton fx:id="APIButton" layoutX="2.0" layoutY="304.0" prefHeight="32.0" prefWidth="74.0" text=" ">
                <graphic>
                   <ImageView fitHeight="48.0" fitWidth="59.0" translateX="3.0">
                      <image>
@@ -21,7 +21,7 @@
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></JFXButton>
-            <JFXButton fx:id="AddButton" layoutY="91.0" onMouseClicked="#initialize" prefHeight="42.0" prefWidth="84.0" text=" ">
+            <JFXButton fx:id="AddButton" layoutY="145.0" onMouseClicked="#initialize" prefHeight="42.0" prefWidth="84.0" text=" ">
                <graphic>
                   <ImageView fitHeight="33.0" fitWidth="30.0" translateX="5.0">
                      <image>
@@ -33,7 +33,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </JFXButton>
-            <JFXButton fx:id="SearchButton" layoutY="146.0" onMouseClicked="#initialize" prefHeight="26.0" prefWidth="84.0" text=" ">
+            <JFXButton fx:id="SearchButton" layoutY="200.0" onMouseClicked="#initialize" prefHeight="26.0" prefWidth="84.0" text=" ">
                <graphic>
                   <ImageView fitHeight="40.0" fitWidth="35.0" translateX="5.0">
                      <image>
@@ -45,7 +45,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </JFXButton>
-            <JFXButton fx:id="gameButton" layoutX="1.0" layoutY="199.0" prefHeight="26.0" prefWidth="84.0" text=" ">
+            <JFXButton fx:id="ultilityButton" layoutX="1.0" layoutY="253.0" prefHeight="26.0" prefWidth="84.0" text=" ">
                <graphic>
                   <ImageView fitHeight="38.0" fitWidth="40.0" translateX="4.0">
                      <image>
@@ -56,7 +56,7 @@
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></JFXButton>
-            <JFXButton fx:id="flashCard" layoutX="1.0" layoutY="315.0" prefHeight="32.0" prefWidth="82.0" text=" ">
+            <JFXButton fx:id="flashCard" layoutX="1.0" layoutY="369.0" prefHeight="32.0" prefWidth="82.0" text=" ">
                <graphic>
                   <ImageView fitHeight="38.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" translateX="4.0">
                      <image>
@@ -67,29 +67,6 @@
                      </cursor>
                   </ImageView>
                </graphic>
-            </JFXButton>
-            <JFXButton fx:id="guessButton" layoutX="5.0" layoutY="374.0" onAction="#initialize" prefHeight="46.0" prefWidth="82.0" text=" ">
-               <graphic>
-                  <ImageView fitHeight="42.0" fitWidth="62.0">
-                     <image>
-                        <Image url="@iconandimage/guessgame1.png" />
-                     </image>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </ImageView>
-               </graphic></JFXButton>
-            <JFXButton fx:id="reviewVocabButton" layoutX="8.0" layoutY="434.0" prefHeight="32.0" prefWidth="74.0" text=" ">
-               <graphic>
-                  <ImageView fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@iconandimage/book.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
             </JFXButton>
          </children>
       </AnchorPane>

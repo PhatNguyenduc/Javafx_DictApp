@@ -1,20 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane fx:id="mainAnchorPane" prefHeight="560.0" prefWidth="750.0" style="-fx-border-color: black; -fx-border-radius: 4;" styleClass="anchorPane" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ReviewVocab">
    <children>
-      <Label fx:id="meaningLabel" alignment="CENTER" prefHeight="230.0" prefWidth="750.0" style="-fx-border-color: black; -fx-border-radius: 10;" text="Label" textAlignment="CENTER" wrapText="true">
+      <Label fx:id="meaningLabel" alignment="CENTER" layoutX="3.0" prefHeight="230.0" prefWidth="750.0" style="-fx-border-color: black; -fx-border-radius: 10;" styleClass="meaningLabel" stylesheets="@style.css" text="Label" textAlignment="CENTER" wrapText="true">
          <font>
-            <Font name="Arial" size="14.0" />
+            <Font name="Arial" size="22.0" />
          </font></Label>
-      <Label fx:id="answerLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="193.0" layoutY="330.0" prefHeight="38.0" prefWidth="355.0" style="-fx-border-color: black; -fx-border-radius: 10;" textAlignment="CENTER" wrapText="true">
+      <Label fx:id="answerLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="200.0" layoutY="330.0" prefHeight="38.0" prefWidth="355.0" style="-fx-border-color: black; -fx-border-radius: 10;" textAlignment="CENTER" wrapText="true">
          <font>
             <Font name="Arial" size="14.0" />
          </font>
+         <cursor>
+            <Cursor fx:constant="TEXT" />
+         </cursor>
       </Label>
-      <Label fx:id="curLabel" alignment="CENTER" layoutX="318.0" layoutY="491.0" prefHeight="18.0" prefWidth="114.0" style="-fx-font-size: 20;" text="Label" textAlignment="CENTER" wrapText="true" />
+      <Label fx:id="curLabel" alignment="CENTER" layoutX="320.0" layoutY="484.0" prefHeight="18.0" prefWidth="114.0" style="-fx-font-size: 20;" text="Label" textAlignment="CENTER" wrapText="true" />
    </children>
 </AnchorPane>

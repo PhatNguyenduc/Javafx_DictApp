@@ -6,6 +6,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.*;
+import javafx.scene.web.WebView;
+
 import static Controller.SceneController.dict;
 
 public class AddWord {
@@ -22,6 +24,7 @@ public class AddWord {
     private TextArea meaning = new TextArea();
     @FXML
     private Button confirm = new Button();
+
     @FXML
     private Label loglabel = new Label();
     @FXML

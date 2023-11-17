@@ -2,12 +2,19 @@ package Controller;
 
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.geometry.Insets;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import com.sun.speech.freetts.Voice;
 import com.sun.speech.freetts.VoiceManager;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
+import javafx.scene.web.WebEngine;
+import javafx.scene.web.WebView;
+import javafx.stage.Stage;
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,8 +26,12 @@ public class Searching_Controller {
     public String pathSavedWords = "src\\main\\java\\savedWord.txt";
     public String pathHistory = "src\\main\\java\\history.txt";
     public static String getWord = " ";
+    public static String searchweb = "";
     @FXML
     private ListView<String> listView = new ListView<String>();
+
+    @FXML
+    private Button web_cambridge = new Button();
     @FXML
     private TextField searchtext = new TextField();
     @FXML
@@ -107,6 +118,7 @@ public class Searching_Controller {
                 meaningArea.setText(meaning);
                 flag.setVisible(true);
                 getWord = selectedWord;
+                searchweb = selectedWord;
                 setImage();
                 if (!historyWords.contains(selectedWord)) {
                     historyWords.add(0,selectedWord);
@@ -156,6 +168,23 @@ public class Searching_Controller {
                 insertSavedWord();
             }
             setImage();
+        });
+
+        web_cambridge.setOnAction(event -> {
+            Stage stage = new Stage();
+            BorderPane root = new BorderPane();
+            Scene scene = new Scene(root, 800, 600);
+            scene.setFill(Color.BLACK);
+            stage.setScene(scene);
+            stage.setTitle("Online dictionary look up");
+            stage.show();
+
+            WebView webView = new WebView();
+            BorderPane.setMargin(webView, new Insets(10));
+            root.setCenter(webView);
+
+            WebEngine webEngine = webView.getEngine();
+            webEngine.load("https://dictionary.cambridge.org/dictionary/english/" + searchweb);
         });
 }
     private void deleteSavedWord() {

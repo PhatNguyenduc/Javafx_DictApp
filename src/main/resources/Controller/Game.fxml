@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="560.0" prefWidth="750.0" style="-fx-border-color: black; -fx-border-width: 2;" styleClass="anchorPane" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.GameController">
+<AnchorPane prefHeight="560.0" prefWidth="750.0" style="-fx-border-color: black; -fx-border-width: 2;" styleClass="anchorPane" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.CatchwordController">
     <children>
         <ImageView fx:id="imageView1" fitHeight="120.0" fitWidth="120.0" layoutX="62.0" layoutY="118.0" onMouseClicked="#initialize" pickOnBounds="true" preserveRatio="true">
 
@@ -107,6 +107,11 @@
                   </Label>
                     </children>
                 </Pane>
+            <ImageView fitHeight="100.0" fitWidth="400.0" layoutX="226.0" pickOnBounds="true" preserveRatio="true">
+                <image>
+                    <Image url="@iconandimage/Catch(1)(1).png" />
+                </image>
+            </ImageView>
 
                   </children>
       </AnchorPane>
@@ -174,10 +179,5 @@
          <font>
             <Font name="Arial" size="14.0" />
          </font></TextField>
-      <ImageView fitHeight="100.0" fitWidth="400.0" layoutX="175.0" pickOnBounds="true" preserveRatio="true">
-          <image>
-              <Image url="@iconandimage/Catch(1)(1).png" />
-          </image>
-      </ImageView>
     </children>
 </AnchorPane>
