@@ -62,7 +62,7 @@ public class Guessgame {
                 alert.setTitle("INCORRECT");
 
                 alert.getDialogPane().setPrefSize(200,100);
-                alert.getDialogPane().setHeader(new ImageView(getClass().getResource("iconandimage/false_alert.png").toString()));
+                alert.getDialogPane().setHeader(new ImageView(getClass().getResource("iconandimage/wrong_alert.png").toString()));
                 alert.getDialogPane().getStylesheets().addAll(getClass().getResource("style.css").toExternalForm());
                 alert.getDialogPane().getStyleClass().add("guess");
                 alert.setContentText("           The right answer is : " + ans);

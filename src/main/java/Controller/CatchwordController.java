@@ -16,7 +16,8 @@ import java.util.List;
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicInteger;
 
-public class CatchwordController {
+public class
+CatchwordController {
     @FXML
     private ImageView imageView1 = new ImageView();
     @FXML
@@ -87,6 +88,8 @@ public class CatchwordController {
     private TextField answerTextField = new TextField();
     @FXML
     private Button playAgain = new Button();
+    @FXML
+    private Button showHint = new Button();
     private int image = 0;
     private String key = "";
     private String path = "src\\main\\java\\question.txt";
@@ -111,6 +114,10 @@ public class CatchwordController {
     private Image image9;
     private List<String> hint = new ArrayList<>();
     private int trueQuestion = 0;
+    private int hintIndex = 0;
+    @FXML
+    private ImageView imageViewHint = new ImageView();
+    private Image imageHint;
 
     private void setFakeVisibleFalse() {
         fake1.setVisible(false);
@@ -240,17 +247,8 @@ public class CatchwordController {
 
     private void setupHint(int i) {
         trueQuestion++;
-        if (trueQuestion <= hint.size()) {
-            labelInfoHint.setText("Bạn đã trả lời đúng! Đây là gợi ý của bạn");
-            labelHint.setText(hint.get(trueQuestion - 1));
-        } else {
-            labelInfoHint.setText("Bạn đã hết gợi ý!");
-            labelHint.setText("");
-        }
-        hintPane.setVisible(true);
-        buttonHint.setOnAction(event -> {
-            hintPane.setVisible(false);
-        });
+        imageHint = new Image(getClass().getResource("iconandimage/hint-icon-clipart.png").toString());
+        imageViewHint.setImage(imageHint);
         playAgain.setVisible(true);
         if (i == 1) {
             checkFake1 = false;
@@ -412,11 +410,26 @@ public class CatchwordController {
                 checkFake9 = true;
                 setVisibleCheck();
                 image = 3 - image;
+                imageHint = new Image(getClass().getResource("iconandimage/3194435-200.png").toString());
+                imageViewHint.setImage(imageHint);
                 setUpInitialize();
             }
         });
-
-
+        showHint.setOnMouseClicked(event -> {
+        if (trueQuestion > 0) {
+            labelInfoHint.setText("Đây là gợi ý của bạn!");
+            hintIndex = (trueQuestion - 1) % hint.size();
+            labelHint.setText(hint.get(hintIndex));
+            trueQuestion--;
+        } else {
+            labelInfoHint.setText("Bạn cần trả lời đúng câu hỏi để nhận gợi ý");
+            labelHint.setText("");
+        }
+        hintPane.setVisible(true);
+        buttonHint.setOnAction(e -> {
+            hintPane.setVisible(false);
+        });
+        });
     }
 
     private List<List<String>> questions (String path) {
@@ -464,7 +477,7 @@ public class CatchwordController {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("WRONG");
         alert.getDialogPane().setPrefSize(200,100);
-        alert.getDialogPane().setHeader(new ImageView(getClass().getResource("iconandimage/false_alert.png").toString()));
+        alert.getDialogPane().setHeader(new ImageView(getClass().getResource("iconandimage/wrong_alert.png").toString()));
         alert.getDialogPane().getStylesheets().addAll(getClass().getResource("style.css").toExternalForm());
         alert.getDialogPane().getStyleClass().add("guess");
         alert.setContentText("Hãy thử lại hoặc xem đáp án đúng.");

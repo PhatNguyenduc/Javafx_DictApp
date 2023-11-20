@@ -97,17 +97,13 @@ public class Searching_Controller {
         System.gc();
         setImageSaveWord = new Image(getClass().getResource("iconandimage/star.png").toString());
         imageSaveWord.setImage(setImageSaveWord);
-        listView.setItems(historyList);
+        listView.setItems(dataList);
 
         searchtext.setOnKeyTyped(keyEvent -> {
-            if (searchtext.getText().isEmpty()) {
-                ObservableList<String> List = observableArrayList();
-                List.addAll(historyWords);
-                listView.setItems(List);
-            } else {
+
                 String newText = searchtext.getText().trim();
                 filterData(newText);
-            }
+
         });
 
         listView.setOnMouseClicked(event -> {
@@ -236,6 +232,8 @@ public class Searching_Controller {
             dataList.remove(getWord);
             dict.deleteWord(getWord);
             dict.exportToFile(path);
+            historyList.remove(getWord);
+            exportToFile("history.txt",historyList);
             getWord = null;
         }
     }

@@ -179,5 +179,14 @@
          <font>
             <Font name="Arial" size="14.0" />
          </font></TextField>
+      <JFXButton fx:id="showHint" layoutX="700.0" layoutY="50.0" text=" ">
+         <graphic>
+            <ImageView fitHeight="30.0" fitWidth="30.0">
+               <image>
+                  <Image url="@iconandimage/hint-icon-clipart.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
     </children>
 </AnchorPane>
