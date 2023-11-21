@@ -1,3 +1,5 @@
+accretive
+a la carte
 talentless
 talent-scout
 talent money
@@ -9,7 +11,6 @@ quadraphonic
 quad
 quackle
 qto
-q.e.d (quod erat demonstradum)
 qbbasic
 qadi
 hello
@@ -19,14 +20,12 @@ add
 abasement
 abeyance
 aha
-hhhh
 abbreviated
 rabbet
 abask
 dynamitic
 abase
 ablush
-abash
 abashed
 z variable
 abdicate

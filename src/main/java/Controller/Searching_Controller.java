@@ -97,12 +97,18 @@ public class Searching_Controller {
         System.gc();
         setImageSaveWord = new Image(getClass().getResource("iconandimage/star.png").toString());
         imageSaveWord.setImage(setImageSaveWord);
-        listView.setItems(dataList);
+        listView.setItems(historyList);
 
         searchtext.setOnKeyTyped(keyEvent -> {
 
+            if (searchtext.getText().isEmpty()) {
+                ObservableList<String> List = observableArrayList();
+                List.addAll(historyList);
+                listView.setItems(List);
+            } else {
                 String newText = searchtext.getText().trim();
                 filterData(newText);
+            }
 
         });
 

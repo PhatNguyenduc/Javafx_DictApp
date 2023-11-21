@@ -52,7 +52,7 @@ public class AddWord {
         String newMeaning = meaning.getText().toString().toLowerCase().trim();
 
         if (dict.getDictionary().haveWord(newWord)) {
-            String l = "Word exists in dictionary, use update if you want to change the meaning of the word";
+            String l = "Word exists in dictionary";
             logstatus.setText(l);
 
         } else {
