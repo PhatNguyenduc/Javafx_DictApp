@@ -2,13 +2,20 @@
 Develop by Nguyen Duc Phat & Nguyen Van Son - students in University of Engineering and Technology
 Course : Object - Oriented Programming Course
 -The Dictionary includes about 103000 English word with Vietnamese meaings.
+
+Feature: 
+
+Search - change - add - delete word.
+Flash Card + Game.
+API translate.
+
 #Set up
 
 Step 1:
 download zip and extract 
 In project structure
-put free-tts,openjdk,sdk to lib.
-set up modules of lib.
+add new lib freetts.
+set up modules for added lib.
 change euhansolo.module from Runtime to Compile.
 ![image](https://github.com/PhatNguyenduc/Javafx_DictApp/assets/115773745/de59ef95-7e8d-41cc-a0fa-7b120356cbd5)
 
