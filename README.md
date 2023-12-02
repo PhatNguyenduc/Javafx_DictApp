@@ -29,8 +29,11 @@ Preview:
 
 
 about Game: 
+
 Anagram - restruct word to other word.
+
 Combine word : put letters in favourite to right form
+
 Catch word : classic game.
 
 API: free key.
